@@ -278,6 +278,23 @@
   margin: 0;
 }
 
+.cliente-email,
+.cliente-telefone {
+  font-size: 0.9rem;
+  color: var(--cor-cinza-prata);
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.agendamento-data {
+  font-size: 0.85rem;
+  color: var(--cor-cinza-claro);
+  margin: 0;
+  font-style: italic;
+}
+
 .servico-nome {
   color: var(--cor-silver-claro);
   margin: 0;

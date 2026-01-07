@@ -176,13 +176,24 @@ export default AdminDashboard;
                     </div>
                     <div className="agendamento-detalhes">
                       <p className="cliente-nome">
-                        <Users /> {agendamento.cliente.nome}
+                        <Users /> <strong>{agendamento.cliente.nome}</strong>
                       </p>
+                      <p className="cliente-email">
+                        📧 {agendamento.cliente.email}
+                      </p>
+                      {agendamento.cliente.telefone && (
+                        <p className="cliente-telefone">
+                          📱 {agendamento.cliente.telefone}
+                        </p>
+                      )}
                       <p className="servico-nome">
-                        {agendamento.servico.nome}
+                        ✂️ {agendamento.servico.nome}
                       </p>
                       <p className="servico-preco">
-                        R$ {agendamento.servico.preco.toFixed(2)}
+                        💰 R$ {agendamento.servico.preco.toFixed(2)}
+                      </p>
+                      <p className="agendamento-data">
+                        📅 {new Date(agendamento.data).toLocaleDateString('pt-BR')}
                       </p>
                     </div>
                   </div>

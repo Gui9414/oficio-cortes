@@ -53,7 +53,7 @@ const Header = () => {
                 </Link>
                 {isAdmin() ? (
                   <Link to="/admin" onClick={closeMenu} className="btn-admin">
-                    Admin
+                    ADM
                   </Link>
                 ) : (
                   <Link to="/meus-agendamentos" onClick={closeMenu}>
