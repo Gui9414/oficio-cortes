@@ -33,7 +33,7 @@
 }
 
 .logo-img {
-  height: 150px;
+  height: 115px;
   width: auto;
   object-fit: contain;
   filter: invert(1) brightness(1.5) contrast(1.8) saturate(1.2);
@@ -240,7 +240,7 @@
   }
 
   .logo-img {
-    height: 55px;
+    height: 70px;
   }
 
   .logo h1 {
