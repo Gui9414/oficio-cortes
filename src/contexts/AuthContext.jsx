@@ -14,23 +14,28 @@ export const useAuth = () => {
 export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     // Verificar se há um usuário logado ao carregar a aplicação
-    const token = localStorage.getItem('token');
-    if (token) {
-      // Para sistema mock, restaurar dados do usuário admin diretamente
-      if (token === 'mock-jwt-token-admin-12345') {
-        setUser({
-          _id: '1',
-          nome: 'Admin',
-          email: 'admin@oficiocortes.com',
-          telefone: '11918474607',
-          tipo: 'admin'
-        });
+    try {
+      const token = localStorage.getItem('token');
+      if (token) {
+        // Para sistema mock, restaurar dados do usuário admin diretamente
+        if (token === 'mock-jwt-token-admin-12345') {
+          setUser({
+            _id: '1',
+            nome: 'Admin',
+            email: 'admin@oficiocortes.com',
+            telefone: '11918474607',
+            tipo: 'admin'
+          });
+        }
       }
-      setLoading(false);
-    } else {
+    } catch (err) {
+      console.error('Erro ao carregar usuário:', err);
+      setError(err.message);
+    } finally {
       setLoading(false);
     }
   }, []);
@@ -81,6 +86,7 @@ export const AuthProvider = ({ children }) => {
   const value = {
     user,
     loading,
+    error,
     login,
     register,
     logout,

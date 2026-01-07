@@ -22,17 +22,49 @@ import MeusAgendamentos from './pages/MeusAgendamentos';
 // Componente de rota protegida
 import ProtectedRoute from './components/ProtectedRoute';
 
+// ErrorBoundary para prevenir crash total
+class ErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false, error: null };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error('Erro capturado pelo ErrorBoundary:', error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      return (
+        <div style={{ padding: '2rem', textAlign: 'center' }}>
+          <h1>Ops! Algo deu errado.</h1>
+          <p>Por favor, recarregue a página.</p>
+          <button onClick={() => window.location.reload()} style={{ padding: '0.5rem 1rem', marginTop: '1rem', cursor: 'pointer' }}>
+            Recarregar
+          </button>
+        </div>
+      );
+    }
+    return this.props.children;
+  }
+}
+
 function App() {
-  console.log('App renderizando...');
+  console.log('App renderizando no domínio:', window.location.hostname);
   
   return (
-    <Router>
-      <AuthProvider>
-        <AppProvider>
-          <div className="app">
-            <Header />
-            <main className="main-content">
-              <Routes>
+    <ErrorBoundary>
+      <Router>
+        <AuthProvider>
+          <AppProvider>
+            <div className="app">
+              <Header />
+              <main className="main-content">
+                <Routes>
                 {/* Rotas públicas */}
                 <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
@@ -69,12 +101,13 @@ function App() {
                   </ProtectedRoute>
                 } />
               </Routes>
-            </main>
-            <Footer />
-          </div>
-        </AppProvider>
-      </AuthProvider>
-    </Router>
+              </main>
+              <Footer />
+            </div>
+          </AppProvider>
+        </AuthProvider>
+      </Router>
+    </ErrorBoundary>
   );
 }
 

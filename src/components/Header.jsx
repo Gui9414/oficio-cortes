@@ -72,7 +72,7 @@ const Header = () => {
                 <Link to="/login" onClick={closeMenu} className="btn-login">
                   Entrar
                 </Link>
-                <Link to="/cadastro" onClick={closeMenu} className="btn btn-primary">
+                <Link to="/cadastro" onClick={closeMenu}>
                   Cadastrar
                 </Link>
               </>
