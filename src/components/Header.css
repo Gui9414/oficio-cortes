@@ -33,7 +33,7 @@
 }
 
 .logo-img {
-  height: 200px;
+  height: 150px;
   width: auto;
   object-fit: contain;
   filter: invert(1) brightness(1.5) contrast(1.8) saturate(1.2);
