@@ -1,0 +1,419 @@
+/* ============================================
+   ADMIN DASHBOARD - OFÍCIO CORTES
+   ============================================ */
+
+.admin-dashboard {
+  min-height: 100vh;
+  padding: 2rem;
+  background: var(--cor-fundo);
+  color: var(--cor-texto);
+}
+
+.admin-page {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: var(--cor-preto);
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.admin-header .page-title {
+  margin-bottom: 0;
+}
+
+/* Estatísticas */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.stat-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--cor-card);
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  transition: all var(--transicao-media);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-silver);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+
+.stat-icon {
+  width: 60px;
+  height: 60px;
+  background: var(--cor-silver);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-preto);
+}
+
+.stat-content h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--cor-silver);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.stat-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: var(--cor-dourado);
+  margin: 0;
+}
+
+/* Ações Rápidas */
+.quick-actions {
+  margin-top: 3rem;
+}
+
+.quick-actions h2 {
+  color: var(--cor-silver);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.action-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--cor-card);
+  border-radius: 12px;
+  border: 1px solid var(--cor-borda);
+  text-decoration: none;
+  color: var(--cor-texto);
+  transition: all var(--transicao-media);
+}
+
+.action-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-dourado);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+.action-card svg {
+  color: var(--cor-dourado);
+  margin-bottom: 1rem;
+}
+
+.action-card h3 {
+  color: var(--cor-silver);
+  margin: 0.5rem 0;
+}
+
+.action-card p {
+  color: var(--cor-texto-claro);
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+/* Estatísticas antigas (mantidas para compatibilidade) */
+.estatisticas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.estat-card {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--gradiente-dark);
+  transition: all var(--transicao-media);
+}
+
+.estat-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--cor-silver);
+}
+
+.estat-icone {
+  width: 70px;
+  height: 70px;
+  background: var(--cor-silver);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: var(--cor-preto);
+  flex-shrink: 0;
+}
+
+.estat-info {
+  flex: 1;
+}
+
+.estat-label {
+  font-size: 0.9rem;
+  color: var(--cor-silver);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 0.5rem;
+}
+
+.estat-valor {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--cor-branco);
+  font-family: var(--font-titulo);
+  margin: 0;
+}
+
+/* Filtro */
+.filtro-data {
+  max-width: 400px;
+  margin-bottom: 2rem;
+}
+
+.filtro-data label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--cor-silver);
+  margin-bottom: 0.75rem;
+}
+
+.filtro-data input {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-cinza-medio);
+  color: var(--cor-branco);
+}
+
+/* Agendamentos */
+.agendamentos-container {
+  padding: 2.5rem;
+}
+
+.agendamentos-container h2 {
+  margin-bottom: 2rem;
+  font-size: 1.75rem;
+}
+
+.agendamentos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.agendamento-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--cor-cinza-medio);
+  border: 2px solid var(--cor-cinza-claro);
+  transition: all var(--transicao-rapida);
+}
+
+.agendamento-item:hover {
+  border-color: var(--cor-silver);
+}
+
+.agendamento-info {
+  display: flex;
+  gap: 2rem;
+  flex: 1;
+}
+
+.agendamento-horario {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-silver);
+  color: var(--cor-silver);
+  font-size: 1.25rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.agendamento-detalhes {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cliente-nome {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--cor-branco);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 0;
+}
+
+.servico-nome {
+  color: var(--cor-silver-claro);
+  margin: 0;
+}
+
+.servico-preco {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--cor-silver);
+  font-family: var(--font-titulo);
+  margin: 0;
+}
+
+/* Ações */
+.agendamento-acoes {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.badge {
+  padding: 0.5rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  white-space: nowrap;
+}
+
+.badge-pendente {
+  background: rgba(255, 193, 7, 0.2);
+  color: #ffc107;
+  border: 2px solid #ffc107;
+}
+
+.badge-confirmado {
+  background: rgba(0, 123, 255, 0.2);
+  color: #007bff;
+  border: 2px solid #007bff;
+}
+
+.badge-concluido {
+  background: rgba(40, 167, 69, 0.2);
+  color: #28a745;
+  border: 2px solid #28a745;
+}
+
+.badge-cancelado {
+  background: rgba(220, 53, 69, 0.2);
+  color: #dc3545;
+  border: 2px solid #dc3545;
+}
+
+.acoes-buttons {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-acao {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid;
+  background: transparent;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all var(--transicao-rapida);
+}
+
+.btn-concluir {
+  color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-concluir:hover {
+  background: #28a745;
+  color: white;
+}
+
+.btn-cancelar {
+  color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-cancelar:hover {
+  background: #dc3545;
+  color: white;
+}
+
+.sem-agendamentos {
+  text-align: center;
+  padding: 3rem;
+  color: var(--cor-silver);
+  font-size: 1.1rem;
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .estatisticas-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .agendamento-item {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+  }
+
+  .agendamento-info {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .agendamento-acoes {
+    justify-content: space-between;
+  }
+}
+
+@media (max-width: 576px) {
+  .estatisticas-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .estat-card {
+    padding: 1.5rem;
+  }
+
+  .estat-icone {
+    width: 60px;
+    height: 60px;
+    font-size: 1.75rem;
+  }
+
+  .estat-valor {
+    font-size: 1.5rem;
+  }
+}

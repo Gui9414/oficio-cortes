@@ -1,0 +1,385 @@
+/* ============================================
+   ADMIN CONFIGURAÇÕES - OFÍCIO CORTES
+   ============================================ */
+
+.admin-config-page {
+  min-height: 100vh;
+  padding: 4rem 0;
+  background: var(--cor-preto);
+}
+
+.config-tabs {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.tab-btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-cinza-claro);
+  color: var(--cor-branco);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all var(--transicao-media);
+}
+
+.tab-btn:hover {
+  border-color: var(--cor-silver);
+  transform: translateY(-2px);
+}
+
+.tab-btn.ativo {
+  background: var(--cor-silver);
+  color: var(--cor-preto);
+  border-color: var(--cor-silver);
+}
+
+.config-content {
+  padding: 3rem;
+}
+
+.config-descricao {
+  color: var(--cor-silver-claro);
+  margin-bottom: 2rem;
+  font-size: 1.05rem;
+}
+
+/* HORÁRIOS */
+.horarios-lista {
+  margin-bottom: 2rem;
+}
+
+.horario-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-cinza-claro);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+
+.horario-dia {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  min-width: 180px;
+}
+
+.horario-dia input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.horario-inputs {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.horario-inputs .input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.horario-inputs label {
+  font-size: 0.85rem;
+  color: var(--cor-silver-claro);
+}
+
+.horario-inputs input[type="time"] {
+  padding: 0.5rem;
+  background: var(--cor-cinza-medio);
+  border: 1px solid var(--cor-cinza-claro);
+  border-radius: 5px;
+  color: var(--cor-branco);
+  font-size: 1rem;
+}
+
+.horario-separador {
+  color: var(--cor-silver-claro);
+  margin-top: 1.5rem;
+}
+
+.horario-fechado {
+  color: var(--cor-cinza-claro);
+  font-style: italic;
+}
+
+/* FORMS */
+.form-adicionar {
+  background: linear-gradient(135deg, var(--cor-cinza-escuro) 0%, var(--cor-cinza-carvao) 100%);
+  padding: 2.5rem;
+  border-radius: 12px;
+  margin-bottom: 3rem;
+  border: 2px solid var(--cor-cinza-claro);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.form-adicionar:hover {
+  border-color: var(--cor-silver);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+}
+
+.form-adicionar h3 {
+  margin-bottom: 2rem;
+  color: var(--cor-silver);
+  font-size: 1.4rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--cor-silver-claro);
+  font-weight: 600;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.85rem;
+  background: var(--cor-cinza-medio);
+  border: 2px solid var(--cor-cinza-claro);
+  border-radius: 8px;
+  color: var(--cor-branco);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--cor-silver);
+  background: var(--cor-cinza-queimado);
+  box-shadow: 0 0 0 3px rgba(192, 192, 192, 0.1);
+}
+
+.form-group textarea {
+  min-height: 100px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+/* BOTÃO ADICIONAR */
+.form-adicionar .btn-primary {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, var(--cor-silver) 0%, var(--cor-cinza-prata) 100%);
+  color: var(--cor-preto);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(192, 192, 192, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-adicionar .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
+  background: linear-gradient(135deg, var(--cor-cinza-prata) 0%, var(--cor-silver-claro) 100%);
+}
+
+.form-adicionar .btn-primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 10px rgba(192, 192, 192, 0.2);
+}
+
+.form-adicionar .btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* LISTAS */
+.servicos-lista,
+.produtos-lista {
+  margin-top: 2rem;
+}
+
+.servicos-lista h3,
+.produtos-lista h3 {
+  margin-bottom: 1.5rem;
+  color: var(--cor-silver);
+}
+
+.lista-vazia {
+  text-align: center;
+  color: var(--cor-cinza-claro);
+  padding: 3rem;
+  font-style: italic;
+}
+
+.servico-item,
+.produto-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-cinza-claro);
+  border-radius: 10px;
+  margin-bottom: 1rem;
+  gap: 2rem;
+}
+
+.servico-info,
+.produto-info {
+  flex: 1;
+}
+
+.servico-info h4,
+.produto-info h4 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  color: var(--cor-silver);
+}
+
+.servico-preco,
+.produto-preco {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--cor-silver);
+  font-family: var(--font-titulo);
+}
+
+.servico-duracao,
+.produto-estoque {
+  color: var(--cor-silver-claro);
+  margin-top: 0.3rem;
+}
+
+.servico-desc,
+.produto-desc {
+  color: var(--cor-cinza-claro);
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.produto-categoria {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  background: var(--cor-cinza-medio);
+  border-radius: 15px;
+  font-size: 0.85rem;
+  color: var(--cor-silver);
+  margin-top: 0.5rem;
+}
+
+.servico-acoes,
+.produto-acoes {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-acao {
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transicao-rapida);
+  white-space: nowrap;
+}
+
+.btn-ativo {
+  background: var(--cor-silver);
+  color: var(--cor-preto);
+}
+
+.btn-ativo:hover {
+  opacity: 0.8;
+}
+
+.btn-remover {
+  background: #dc3545;
+  color: white;
+}
+
+.btn-remover:hover {
+  background: #c82333;
+}
+
+/* ALERTS */
+.alert {
+  padding: 1rem 1.5rem;
+  border-radius: 5px;
+  margin-bottom: 2rem;
+  font-weight: 600;
+}
+
+.alert-sucesso {
+  background: #28a745;
+  color: white;
+}
+
+.alert-erro {
+  background: #dc3545;
+  color: white;
+}
+
+/* RESPONSIVO */
+@media (max-width: 768px) {
+  .horario-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .horario-inputs {
+    width: 100%;
+  }
+
+  .servico-item,
+  .produto-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .servico-acoes,
+  .produto-acoes {
+    width: 100%;
+    flex-direction: column;
+  }
+
+  .btn-acao {
+    width: 100%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}

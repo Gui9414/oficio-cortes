@@ -1,0 +1,199 @@
+/* ============================================
+   HEADER - OFÍCIO CORTES
+   ============================================ */
+
+.header {
+  background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 100%);
+  border-bottom: 2px solid var(--cor-cinza-queimado);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--sombra-lg);
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 2rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  transition: transform var(--transicao-media);
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo-texto {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo h1 {
+  font-family: var(--font-titulo);
+  font-size: clamp(1rem, 2vw, 1.3rem);
+  font-weight: 900;
+  color: var(--cor-branco);
+  letter-spacing: 2px;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.logo-destaque {
+  color: var(--cor-silver) !important;
+  letter-spacing: 3px !important;
+  font-size: clamp(1.2rem, 2.5vw, 1.6rem) !important;
+}
+
+/* Navegação */
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: var(--cor-silver);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 2px solid transparent;
+  transition: all var(--transicao-rapida);
+}
+
+.nav a:hover {
+  color: var(--cor-branco);
+  border-bottom-color: var(--cor-silver);
+}
+
+.btn-admin {
+  background: var(--cor-silver);
+  color: var(--cor-preto) !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 0;
+  font-weight: 700;
+}
+
+.btn-admin:hover {
+  background: var(--cor-branco);
+  border-bottom-color: transparent !important;
+}
+
+.btn-login {
+  color: var(--cor-branco) !important;
+}
+
+.btn-logout {
+  background: transparent;
+  color: var(--cor-silver);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transicao-rapida);
+}
+
+.btn-logout:hover {
+  color: var(--cor-branco);
+}
+
+/* Menu Toggle (Mobile) */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: var(--cor-silver);
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  transition: color var(--transicao-rapida);
+}
+
+.menu-toggle:hover {
+  color: var(--cor-branco);
+}
+
+/* Responsividade */
+@media (max-width: 992px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background: var(--cor-cinza-escuro);
+    flex-direction: column;
+    padding: 5rem 2rem 2rem;
+    gap: 1rem;
+    border-left: 2px solid var(--cor-silver);
+    transition: right var(--transicao-media);
+    box-shadow: var(--sombra-xl);
+  }
+
+  .nav-aberto {
+    right: 0;
+  }
+
+  .nav a {
+    width: 100%;
+    padding: 1rem;
+    border-bottom: 1px solid var(--cor-cinza-medio);
+    border-left: 3px solid transparent;
+  }
+
+  .nav a:hover {
+    border-left-color: var(--cor-silver);
+    border-bottom-color: var(--cor-cinza-medio);
+  }
+
+  .btn-logout {
+    width: 100%;
+    justify-content: flex-start;
+    padding: 1rem;
+    border-bottom: 1px solid var(--cor-cinza-medio);
+  }
+
+  .btn-admin {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo h1 {
+    font-size: 1.25rem;
+    letter-spacing: 2px;
+  }
+
+  .logo-subtitle {
+    font-size: 0.5rem;
+    letter-spacing: 2px;
+  }
+
+  .nav {
+    width: 100%;
+  }
+}

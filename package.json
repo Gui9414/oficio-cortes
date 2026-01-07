@@ -1,0 +1,43 @@
+{
+  "name": "oficio-cortes",
+  "version": "1.0.0",
+  "description": "Site profissional para a barbearia Ofício Cortes",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "server": "node backend/server.js",
+    "server:dev": "nodemon backend/server.js",
+    "server:mock": "node backend/server-mock.js",
+    "server:firebase": "node backend/server-firebase.js",
+    "seed": "node backend/seed.js",
+    "seed:firebase": "node backend/seed-firebase.js"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "date-fns": "^3.3.1",
+    "dotenv": "^16.4.1",
+    "express": "^4.18.2",
+    "firebase": "^12.7.0",
+    "firebase-admin": "^13.6.0",
+    "jsonwebtoken": "^9.0.2",
+    "lucide-react": "^0.562.0",
+    "mongoose": "^8.1.1",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-icons": "^5.5.0",
+    "react-router-dom": "^6.22.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.1",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "nodemon": "^3.0.3",
+    "vite": "^5.1.4"
+  }
+}
