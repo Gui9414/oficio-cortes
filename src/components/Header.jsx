@@ -29,6 +29,7 @@ const Header = () => {
         <div className="header-content">
           {/* Logo */}
           <Link to="/" className="logo" onClick={closeMenu}>
+            <img src="/logo-oficio.svg" alt="Ofício Cortes" className="logo-img" />
             <div className="logo-texto">
               <h1>BARBEARIA</h1>
               <h1 className="logo-destaque">OFÍCIO CORTES</h1>

@@ -323,39 +323,143 @@
   }
 
   .sobre-stats {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1rem;
   }
 }
 
 @media (max-width: 768px) {
   .hero {
-    height: 80vh;
-    min-height: 500px;
+    height: 70vh;
+    min-height: 450px;
+    padding: 2rem 1rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6vw, 2.5rem);
+    letter-spacing: 2px;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(0.9rem, 3vw, 1.2rem);
+    margin-bottom: 2rem;
   }
 
   .hero-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   .hero-buttons .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+    padding: 0.875rem 2rem;
   }
 
   .servicos-grid,
   .depoimentos-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 
   .cta-buttons {
     flex-direction: column;
     align-items: center;
+    gap: 1rem;
   }
 
   .cta-buttons .btn {
     width: 100%;
-    max-width: 300px;
+    max-width: 280px;
+  }
+
+  .sobre-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-item {
+    padding: 1.25rem 1rem;
+  }
+
+  .stat-item h3 {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    height: 65vh;
+    min-height: 400px;
+    padding: 1.5rem 0.75rem;
+  }
+
+  .hero-title {
+    font-size: 1.5rem;
+    letter-spacing: 1.5px;
+    margin-bottom: 0.75rem;
+  }
+
+  .hero-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+  }
+
+  .hero-buttons .btn {
+    max-width: 100%;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .sobre,
+  .servicos,
+  .barbeiros,
+  .depoimentos,
+  .cta-section {
+    padding: 2.5rem 0;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.85rem;
+    margin-bottom: 2rem;
+  }
+
+  .servico-card,
+  .depoimento-card {
+    padding: 1.25rem;
+  }
+
+  .servico-card h3 {
+    font-size: 1.25rem;
+  }
+
+  .servico-card p {
+    font-size: 0.85rem;
+  }
+
+  .stat-item h3 {
+    font-size: 1.75rem;
+  }
+
+  .stat-item p {
+    font-size: 0.8rem;
+  }
+
+  .placeholder-image {
+    height: 300px;
+  }
+
+  .placeholder-image svg {
+    font-size: 3rem;
+  }
+
+  .placeholder-image p {
+    font-size: 0.9rem;
   }
 }

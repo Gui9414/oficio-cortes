@@ -1,5 +1,5 @@
 import express from 'express';
-import { auth, adminOnly } from '../middleware/authMiddleware.js';
+import { protect, adminOnly } from '../middleware/authMiddleware.js';
 import Configuracao from '../models/Configuracao.js';
 import Produto from '../models/Produto.js';
 
@@ -23,7 +23,7 @@ router.get('/', async (req, res) => {
 });
 
 // Atualizar horários de funcionamento (admin)
-router.put('/horarios', auth, adminOnly, async (req, res) => {
+router.put('/horarios', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOneAndUpdate(
       { tipo: 'horarios' },
@@ -40,7 +40,7 @@ router.put('/horarios', auth, adminOnly, async (req, res) => {
 });
 
 // Atualizar serviços (admin)
-router.put('/servicos', auth, adminOnly, async (req, res) => {
+router.put('/servicos', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOneAndUpdate(
       { tipo: 'servicos' },
@@ -57,7 +57,7 @@ router.put('/servicos', auth, adminOnly, async (req, res) => {
 });
 
 // Adicionar novo serviço (admin)
-router.post('/servicos', auth, adminOnly, async (req, res) => {
+router.post('/servicos', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOne({ tipo: 'servicos' });
     const novoServico = {
@@ -83,7 +83,7 @@ router.post('/servicos', auth, adminOnly, async (req, res) => {
 });
 
 // Atualizar um serviço específico (admin)
-router.put('/servicos/:id', auth, adminOnly, async (req, res) => {
+router.put('/servicos/:id', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOne({ tipo: 'servicos' });
     const servicoIndex = config.servicos.findIndex(s => s.id === req.params.id);
@@ -105,7 +105,7 @@ router.put('/servicos/:id', auth, adminOnly, async (req, res) => {
 });
 
 // Deletar serviço (admin)
-router.delete('/servicos/:id', auth, adminOnly, async (req, res) => {
+router.delete('/servicos/:id', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOne({ tipo: 'servicos' });
     config.servicos = config.servicos.filter(s => s.id !== req.params.id);
@@ -118,7 +118,7 @@ router.delete('/servicos/:id', auth, adminOnly, async (req, res) => {
 });
 
 // Atualizar informações gerais (admin)
-router.put('/geral', auth, adminOnly, async (req, res) => {
+router.put('/geral', protect, adminOnly, async (req, res) => {
   try {
     const config = await Configuracao.findOneAndUpdate(
       { tipo: 'geral' },

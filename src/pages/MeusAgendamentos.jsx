@@ -104,12 +104,12 @@ const MeusAgendamentos = () => {
 
                         <div className="info-row">
                           <Scissors />
-                          <span>{agendamento.servico.nome}</span>
+                          <span>{agendamento.servico?.nome || 'Serviço não especificado'}</span>
                         </div>
 
                         <div className="preco-row">
                           <strong>Valor:</strong>
-                          <span className="preco">R$ {agendamento.servico.preco.toFixed(2)}</span>
+                          <span className="preco">R$ {agendamento.servico?.preco?.toFixed(2) || '0.00'}</span>
                         </div>
                       </div>
                     </div>
@@ -131,8 +131,8 @@ const MeusAgendamentos = () => {
                         <span>{agendamento.horario}</span>
                       </div>
                       <div className="historico-info">
-                        <span>{agendamento.servico.nome}</span>
-                        <span className="preco">R$ {agendamento.servico.preco.toFixed(2)}</span>
+                        <span>{agendamento.servico?.nome || 'Serviço não especificado'}</span>
+                        <span className="preco">R$ {agendamento.servico?.preco?.toFixed(2) || '0.00'}</span>
                       </div>
                       <span className={`badge ${getStatusBadge(agendamento.status).classe}`}>
                         {getStatusBadge(agendamento.status).texto}

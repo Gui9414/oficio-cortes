@@ -11,7 +11,7 @@ export const barbeiroService = {
       return [{
         id: 1,
         nome: 'Guilherme Gonçalves Vieira',
-        bio: 'Barbeiro profissional com mais de 5 anos de experiência. Especialista em cortes clássicos e modernos.',
+        bio: 'Barbeiro profissional com mais de 3 anos de experiência. Especialista em cortes clássicos e modernos.',
         foto: null,
         ativo: true
       }];
