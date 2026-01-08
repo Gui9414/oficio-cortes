@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { User, Phone, Lock, UserPlus } from 'lucide-react';
+import { User, Mail, Phone, Lock, UserPlus } from 'lucide-react';
 import './Login.css';
 
 const Register = () => {
   const [nome, setNome] = useState('');
+  const [email, setEmail] = useState('');
   const [telefone, setTelefone] = useState('');
   const [senha, setSenha] = useState('');
   const [confirmarSenha, setConfirmarSenha] = useState('');
@@ -31,8 +32,8 @@ const Register = () => {
   };
 
   const validarFormulario = () => {
-    if (!nome || !telefone || !senha || !confirmarSenha) {
-      setErro('Por favor, preencha todos os campos');
+    if (!nome || !email || !senha || !confirmarSenha) {
+      setErro('Por favor, preencha todos os campos obrigatórios');
       return false;
     }
 
@@ -41,9 +42,8 @@ const Register = () => {
       return false;
     }
 
-    const telefoneLimpo = telefone.replace(/\D/g, '');
-    if (telefoneLimpo.length !== 11) {
-      setErro('Digite um telefone válido com DDD');
+    if (!email.includes('@') || !email.includes('.')) {
+      setErro('Digite um email válido');
       return false;
     }
 
@@ -71,7 +71,7 @@ const Register = () => {
     setCarregando(true);
 
     const telefoneLimpo = telefone.replace(/\D/g, '');
-    const resultado = await register(nome, telefoneLimpo, senha);
+    const resultado = await register(nome, email, senha, telefoneLimpo);
 
     if (resultado.success) {
       navigate('/');
@@ -113,8 +113,22 @@ const Register = () => {
             </div>
 
             <div className="form-group">
+              <label htmlFor="email">
+                <Mail size={18} /> Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="form-group">
               <label htmlFor="telefone">
-                <Phone size={18} /> Telefone
+                <Phone size={18} /> Telefone (opcional)
               </label>
               <input
                 type="tel"
@@ -123,7 +137,6 @@ const Register = () => {
                 value={telefone}
                 onChange={handleTelefoneChange}
                 maxLength="15"
-                required
               />
             </div>
 
@@ -138,6 +151,7 @@ const Register = () => {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 required
+                minLength="6"
               />
             </div>
 

@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { Phone, Lock, LogIn } from 'lucide-react';
+import { Mail, Lock, LogIn } from 'lucide-react';
 import './Login.css';
 
 const Login = () => {
-  const [telefone, setTelefone] = useState('');
+  const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [erro, setErro] = useState('');
   const [carregando, setCarregando] = useState(false);
@@ -13,40 +13,25 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
-  const formatarTelefone = (valor) => {
-    // Remove tudo que não é número
-    const numeros = valor.replace(/\D/g, '');
-    
-    // Aplica a máscara (11) 99999-9999
-    if (numeros.length <= 11) {
-      return numeros
-        .replace(/(\d{2})(\d)/, '($1) $2')
-        .replace(/(\d{5})(\d)/, '$1-$2');
-    }
-    return valor;
-  };
-
-  const handleTelefoneChange = (e) => {
-    const valorFormatado = formatarTelefone(e.target.value);
-    setTelefone(valorFormatado);
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErro('');
     setCarregando(true);
 
     // Validações simples
-    if (!telefone || !senha) {
+    if (!email || !senha) {
       setErro('Por favor, preencha todos os campos');
       setCarregando(false);
       return;
     }
 
-    // Remove formatação do telefone
-    const telefoneLimpo = telefone.replace(/\D/g, '');
+    if (!email.includes('@')) {
+      setErro('Por favor, insira um email válido');
+      setCarregando(false);
+      return;
+    }
 
-    const resultado = await login(telefoneLimpo, senha);
+    const resultado = await login(email, senha);
 
     if (resultado.success) {
       navigate('/');
@@ -74,16 +59,15 @@ const Login = () => {
 
           <form onSubmit={handleSubmit} className="login-form">
             <div className="form-group">
-              <label htmlFor="telefone">
-                <Phone size={18} /> Telefone
+              <label htmlFor="email">
+                <Mail size={18} /> Email
               </label>
               <input
-                type="tel"
-                id="telefone"
-                placeholder="(11) 99999-9999"
-                value={telefone}
-                onChange={handleTelefoneChange}
-                maxLength="15"
+                type="email"
+                id="email"
+                placeholder="seu@email.com"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 required
               />
             </div>
@@ -99,6 +83,7 @@ const Login = () => {
                 value={senha}
                 onChange={(e) => setSenha(e.target.value)}
                 required
+                minLength="6"
               />
             </div>
 

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { authService } from '../services/authService';
+import { auth } from '../config/firebase';
 
 const AuthContext = createContext();
 
@@ -17,25 +18,40 @@ export const AuthProvider = ({ children }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Verificar se há um usuário logado ao carregar a aplicação
+    // Observar mudanças no estado de autenticação do Firebase
     try {
-      const token = localStorage.getItem('token');
-      if (token) {
-        // Para sistema mock, restaurar dados do usuário admin diretamente
-        if (token === 'mock-jwt-token-admin-12345') {
-          setUser({
-            _id: '1',
-            nome: 'Admin',
-            email: 'admin@oficiocortes.com',
-            telefone: '11918474607',
-            tipo: 'admin'
-          });
-        }
+      if (!auth) {
+        console.warn('⚠️ Firebase Auth não inicializado');
+        setLoading(false);
+        return;
       }
+      
+      const unsubscribe = authService.onAuthStateChange(async (firebaseUser) => {
+        if (firebaseUser) {
+          try {
+            const userData = await authService.getProfile();
+            setUser({
+              id: firebaseUser.uid,
+              email: firebaseUser.email,
+              nome: userData.nome || 'Usuário',
+              telefone: userData.telefone || '',
+              tipo: userData.role || 'cliente',
+              ...userData
+            });
+          } catch (err) {
+            console.error('Erro ao carregar dados do usuário:', err);
+            setUser(null);
+          }
+        } else {
+          setUser(null);
+        }
+        setLoading(false);
+      });
+
+      return () => unsubscribe();
     } catch (err) {
-      console.error('Erro ao carregar usuário:', err);
+      console.error('Erro ao inicializar auth observer:', err);
       setError(err.message);
-    } finally {
       setLoading(false);
     }
   }, []);
@@ -46,15 +62,13 @@ export const AuthProvider = ({ children }) => {
       setUser(userData);
     } catch (error) {
       console.error('Erro ao carregar usuário:', error);
-      localStorage.removeItem('token');
-    } finally {
-      setLoading(false);
+      setUser(null);
     }
   };
 
-  const login = async (telefone, senha) => {
+  const login = async (email, senha) => {
     try {
-      const data = await authService.login(telefone, senha);
+      const data = await authService.login(email, senha);
       setUser(data.user);
       localStorage.setItem('token', data.token);
       return { success: true };
@@ -63,9 +77,9 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = async (nome, telefone, senha) => {
+  const register = async (nome, email, senha, telefone) => {
     try {
-      const data = await authService.register(nome, telefone, senha);
+      const data = await authService.register(nome, email, senha, telefone);
       setUser(data.user);
       localStorage.setItem('token', data.token);
       return { success: true };
@@ -74,13 +88,13 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const logout = () => {
+  const logout = async () => {
+    await authService.logout();
     setUser(null);
-    localStorage.removeItem('token');
   };
 
   const isAdmin = () => {
-    return user?.tipo === 'admin' || user?.tipo === 'barbeiro';
+    return user?.tipo === 'admin' || user?.role === 'admin';
   };
 
   const value = {
