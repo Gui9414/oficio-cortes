@@ -6,12 +6,13 @@ import { getAnalytics } from 'firebase/analytics';
 
 // Configuração do Firebase com fallbacks seguros
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || '',
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || 'oficio-cortes.firebaseapp.com',
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || 'oficio-cortes',
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || 'oficio-cortes.appspot.com',
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || '',
-  appId: import.meta.env.VITE_FIREBASE_APP_ID || ''
+  apiKey: "AIzaSyB1a4yjIafU3v0bd4Jleke_J4lmV7RP5kw",
+  authDomain: "barbearia-oficio-cortes.firebaseapp.com",
+  projectId: "barbearia-oficio-cortes",
+  storageBucket: "barbearia-oficio-cortes.firebasestorage.app",
+  messagingSenderId: "750501554474",
+  appId: "1:750501554474:web:03339afdcb9a5e8e0e5653",
+  measurementId: "G-LJ8C50R4V8"
 };
 
 // Validar configuração antes de inicializar
