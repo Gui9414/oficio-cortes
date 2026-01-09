@@ -120,7 +120,7 @@
   overflow: hidden;
   transition: all var(--transicao-media);
   padding: 0;
-  background: var(--cor-card, #ffffff) !important;
+  background: #232323 !important;
   border: 1px solid var(--cor-borda, #dee2e6) !important;
   color: var(--cor-texto, #333) !important;
 }
@@ -134,7 +134,7 @@
 .produto-imagem {
   width: 100%;
   height: 250px;
-  background: var(--cor-cinza-medio);
+  background: #bdbdbd;
   overflow: hidden;
   position: relative;
 }
@@ -157,7 +157,8 @@
   align-items: center;
   justify-content: center;
   font-size: 4rem;
-  color: var(--cor-cinza-claro);
+  background: #e0e0e0;
+  color: #888;
 }
 
 .badge-desconto {
@@ -176,6 +177,8 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  background: var(--cor-cinza-carvao, #232323);
+  border-radius: 8px;
 }
 
 .produto-info h3 {

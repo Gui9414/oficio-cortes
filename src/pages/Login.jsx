@@ -47,8 +47,8 @@ const Login = () => {
       <div className="login-container">
         <div className="login-card">
           <div className="login-header">
-            <h1>BEM-VINDO DE VOLTA</h1>
-            <p>Entre para agendar seu horário</p>
+            <h1>ÁREA DO BARBEIRO</h1>
+            <p>Acesso exclusivo para profissionais</p>
           </div>
 
           {erro && (
@@ -96,18 +96,11 @@ const Login = () => {
                 <div className="loading"></div>
               ) : (
                 <>
-                  <LogIn size={20} /> Entrar
+                  <LogIn size={20} /> Entrar no Painel
                 </>
               )}
             </button>
           </form>
-
-          <div className="login-footer">
-            <p>
-              Não tem uma conta?{' '}
-              <Link to="/cadastro">Cadastre-se aqui</Link>
-            </p>
-          </div>
         </div>
       </div>
     </div>

@@ -92,7 +92,7 @@ npm run seed
 
 Isso criará:
 
-- 1 admin (<admin@oficiocortes.com> / admin123)
+- 1 admin (gui5herme84@gmail.com / Oficio@Cortes#9X7!R)
 - 3 clientes de teste
 - 1 barbeiro (Guilherme)
 - 8 produtos na loja

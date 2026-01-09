@@ -21,8 +21,11 @@ const Home = () => {
       const response = await api.get('/configuracoes');
       if (response.data.servicos?.servicos) {
         setServicos(response.data.servicos.servicos.filter(s => s.ativo));
+      } else {
+        setServicos([]);
       }
     } catch (error) {
+      setServicos([]);
       console.error('Erro ao carregar serviços:', error);
     }
   };
@@ -110,11 +113,11 @@ const Home = () => {
                   <p>Anos de Experiência</p>
                 </div>
                 <div className="stat-item">
-                  <h3>1000+</h3>
+                  <h3>500+</h3>
                   <p>Clientes Satisfeitos</p>
                 </div>
                 <div className="stat-item">
-                  <h3>5.0</h3>
+                  <h3>4.5</h3>
                   <p>Avaliação Média</p>
                 </div>
               </div>

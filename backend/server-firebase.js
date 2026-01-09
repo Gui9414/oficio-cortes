@@ -8,7 +8,26 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Middlewares
-app.use(cors());
+
+// Segurança: Helmet para headers
+app.use(helmet());
+
+// Segurança: Limite de requisições
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutos
+  max: 100, // Limite por IP
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+app.use(limiter);
+
+// Segurança: CORS restrito
+app.use(cors({
+  origin: ["http://localhost:3000", "https://seusite.com"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true
+}));
+
 app.use(express.json());
 
 // Dados mock em memória (sem banco de dados)
@@ -189,9 +208,21 @@ app.get('/api/agendamentos', (req, res) => {
 });
 
 app.post('/api/agendamentos', (req, res) => {
+  // Validação básica dos dados recebidos
+  const { nomeCliente, telefoneCliente, servicoId, data, horario } = req.body;
+  if (!nomeCliente || !telefoneCliente || !servicoId || !data || !horario) {
+    return res.status(400).json({ message: 'Dados obrigatórios ausentes.' });
+  }
+  // Buscar nome do serviço pelo id
+  let servicoAgendado = servicos.find(s => s.id === servicoId);
   const novoAgendamento = {
     _id: Date.now().toString(),
-    ...req.body,
+    nomeCliente,
+    telefoneCliente,
+    servicoId,
+    servico: servicoAgendado ? servicoAgendado.nome : '-',
+    data,
+    horario,
     status: 'pendente',
     createdAt: new Date()
   };
@@ -285,13 +316,21 @@ app.put('/api/configuracoes/horarios', (req, res) => {
 });
 
 app.post('/api/configuracoes/servicos', (req, res) => {
+  console.log('🔵 POST /api/configuracoes/servicos recebido');
+  console.log('📦 Body recebido:', req.body);
+  
   const novoServico = {
     id: Date.now().toString(),
     ...req.body,
     ativo: true
   };
+  
+  console.log('✅ Novo serviço criado:', novoServico);
   servicos.push(novoServico);
+  console.log('📋 Total de serviços agora:', servicos.length);
+  
   res.status(201).json(novoServico);
+  console.log('✉️ Resposta enviada com sucesso');
 });
 
 app.put('/api/configuracoes/servicos/:id', (req, res) => {

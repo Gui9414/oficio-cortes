@@ -1,5 +1,270 @@
 /* ============================================
-   AGENDAMENTO PAGE - OFÍCIO CORTES
+   AGENDAMENTO PAGE - NOVO DESIGN
+   ============================================ */
+
+.agendamento-page-new {
+  min-height: 100vh;
+  background: var(--cor-preto);
+  padding: 0;
+  margin: 0;
+}
+
+/* Header com gradiente do site */
+.agendamento-header {
+  background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 100%);
+  padding: 3rem 2rem 4rem 2rem;
+  position: relative;
+  border-bottom: 2px solid var(--cor-silver);
+}
+
+.btn-back {
+  position: absolute;
+  top: 2rem;
+  left: 2rem;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: white;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.btn-back:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.header-content {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.header-content h1 {
+  font-size: 2rem;
+  margin: 0 0 1rem 0;
+  font-weight: 600;
+}
+
+.header-content p {
+  margin: 0.25rem 0;
+  font-size: 1rem;
+  opacity: 0.95;
+}
+
+/* Formulário */
+.agendamento-form {
+  max-width: 600px;
+  margin: -2rem auto 0;
+  padding: 2rem;
+  background: var(--cor-cinza-carvao);
+  border-radius: 24px 24px 0 0;
+  position: relative;
+  z-index: 10;
+  box-shadow: var(--sombra-xl);
+}
+
+.form-input {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  margin-bottom: 1rem;
+  background: var(--cor-cinza-escuro);
+  border: 1px solid var(--cor-cinza-queimado);
+  border-radius: 12px;
+  color: var(--cor-branco);
+  font-size: 1rem;
+  transition: all 0.3s;
+  font-family: inherit;
+}
+
+.form-input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-input:focus {
+  outline: none;
+  background: var(--cor-cinza-queimado);
+  border-color: var(--cor-silver);
+  box-shadow: 0 0 0 2px rgba(192, 192, 192, 0.3);
+}
+
+.form-input option {
+  background: var(--cor-cinza-escuro);
+  color: var(--cor-branco);
+}
+
+/* Input de telefone com bandeira */
+.phone-input {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem;
+}
+
+.flag-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+}
+
+.phone-input input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1rem;
+  padding: 0;
+}
+
+.phone-input input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.phone-input input:focus {
+  outline: none;
+}
+
+/* Seção de horários */
+.horarios-section {
+  margin-bottom: 1rem;
+}
+
+.sem-horarios {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Botão Agendar */
+.btn-agendar {
+  width: 100%;
+  padding: 1.25rem;
+  background: var(--gradiente-silver);
+  border: none;
+  border-radius: 12px;
+  color: var(--cor-preto);
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 1.5rem;
+  text-transform: uppercase;
+  box-shadow: var(--sombra-md);
+}
+
+.btn-agendar:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(192, 192, 192, 0.5);
+  background: linear-gradient(135deg, var(--cor-silver-claro) 0%, var(--cor-silver) 100%);
+}
+
+.btn-agendar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Alert de erro */
+.alert {
+  padding: 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.alert-erro {
+  background: rgba(239, 68, 68, 0.2);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #fca5a5;
+}
+
+/* Loading */
+.loading {
+  width: 30px;
+  height: 30px;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Sucesso */
+.sucesso-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background: var(--cor-preto);
+}
+
+.sucesso-icone {
+  width: 100px;
+  height: 100px;
+  background: var(--cor-silver);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cor-preto);
+  margin-bottom: 2rem;
+}
+
+.sucesso-container h2 {
+  color: var(--cor-silver);
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.sucesso-container p {
+  color: var(--cor-cinza-claro);
+  font-size: 1.1rem;
+  margin: 0.5rem 0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .agendamento-header {
+    padding: 2rem 1rem 3rem 1rem;
+  }
+
+  .header-content h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-content p {
+    font-size: 0.9rem;
+  }
+
+  .agendamento-form {
+    padding: 1.5rem;
+    margin: -1.5rem 1rem 0;
+  }
+
+  .form-input {
+    padding: 1rem;
+    font-size: 0.95rem;
+  }
+
+  .phone-input {
+    padding: 1rem;
+  }
+}
+
+/* ============================================
+   ANTIGO - Manter para compatibilidade
    ============================================ */
 
 .agendamento-page {
@@ -92,6 +357,46 @@
   text-align: center;
   margin-bottom: 2.5rem;
   font-size: 2rem;
+}
+
+/* Formulário Dados Cliente */
+.form-dados-cliente {
+  max-width: 600px;
+  margin: 0 auto 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: var(--cor-silver);
+}
+
+.input-field {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  background: var(--cor-cinza-escuro);
+  border: 2px solid var(--cor-cinza-claro);
+  border-radius: 8px;
+  color: var(--cor-branco);
+  transition: all var(--transicao-rapida);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--cor-silver);
+  box-shadow: 0 0 10px rgba(192, 192, 192, 0.3);
+}
+
+.input-field::placeholder {
+  color: var(--cor-cinza-claro);
 }
 
 /* Barbeiros Grid */

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste de API - Ofício Cortes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a1f27;
+            color: #fff;
+        }
+        h1 {
+            color: #c0c0c0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 10px 5px;
+            background: linear-gradient(135deg, #c0c0c0, #a8a8a8);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        button:hover {
+            background: linear-gradient(135deg, #d4d4d4, #c0c0c0);
+        }
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #2a2f37;
+            border: 2px solid #444;
+            border-radius: 5px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Teste de API - Ofício Cortes</h1>
+    
+    <div>
+        <button onclick="testarServicos()">📋 Listar Serviços</button>
+        <button onclick="testarProdutos()">📦 Listar Produtos</button>
+        <button onclick="testarRemoverServico()">🗑️ Testar Remover Serviço</button>
+        <button onclick="testarRemoverProduto()">🗑️ Testar Remover Produto</button>
+        <button onclick="limparResultado()">🧹 Limpar</button>
+    </div>
+    
+    <div id="result"></div>
+
+    <script>
+        const API_URL = 'http://localhost:5000/api';
+        const resultDiv = document.getElementById('result');
+
+        function log(message, type = 'info') {
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'success' ? 'success' : type === 'error' ? 'error' : '';
+            resultDiv.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            resultDiv.scrollTop = resultDiv.scrollHeight;
+        }
+
+        function limparResultado() {
+            resultDiv.innerHTML = '';
+        }
+
+        async function testarServicos() {
+            try {
+                log('🔄 Carregando serviços...');
+                const response = await fetch(`${API_URL}/configuracoes`);
+                const data = await response.json();
+                log(`✅ Sucesso! Encontrados ${data.servicos.servicos.length} serviços`, 'success');
+                log(JSON.stringify(data.servicos.servicos, null, 2));
+            } catch (error) {
+                log(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testarProdutos() {
+            try {
+                log('🔄 Carregando produtos...');
+                const response = await fetch(`${API_URL}/produtos`);
+                const data = await response.json();
+                log(`✅ Sucesso! Encontrados ${data.length} produtos`, 'success');
+                log(JSON.stringify(data, null, 2));
+            } catch (error) {
+                log(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testarRemoverServico() {
+            try {
+                log('🔄 Primeiro, vou buscar os serviços...');
+                const responseGet = await fetch(`${API_URL}/configuracoes`);
+                const data = await responseGet.json();
+                const servicos = data.servicos.servicos;
+                
+                if (servicos.length === 0) {
+                    log('⚠️ Nenhum serviço encontrado para remover', 'error');
+                    return;
+                }
+
+                const primeiroServico = servicos[0];
+                log(`🔄 Tentando remover serviço: ${primeiroServico.nome} (ID: ${primeiroServico.id})`);
+                
+                const responseDelete = await fetch(`${API_URL}/configuracoes/servicos/${primeiroServico.id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (responseDelete.ok) {
+                    const result = await responseDelete.json();
+                    log(`✅ Serviço removido com sucesso!`, 'success');
+                    log(JSON.stringify(result, null, 2));
+                } else {
+                    log(`❌ Erro ao remover: ${responseDelete.status} ${responseDelete.statusText}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        async function testarRemoverProduto() {
+            try {
+                log('🔄 Primeiro, vou buscar os produtos...');
+                const responseGet = await fetch(`${API_URL}/produtos`);
+                const produtos = await responseGet.json();
+                
+                if (produtos.length === 0) {
+                    log('⚠️ Nenhum produto encontrado para remover', 'error');
+                    return;
+                }
+
+                const primeiroProduto = produtos[0];
+                log(`🔄 Tentando remover produto: ${primeiroProduto.nome} (ID: ${primeiroProduto._id})`);
+                
+                const responseDelete = await fetch(`${API_URL}/produtos/${primeiroProduto._id}`, {
+                    method: 'DELETE'
+                });
+                
+                if (responseDelete.ok) {
+                    const result = await responseDelete.json();
+                    log(`✅ Produto removido com sucesso!`, 'success');
+                    log(JSON.stringify(result, null, 2));
+                } else {
+                    log(`❌ Erro ao remover: ${responseDelete.status} ${responseDelete.statusText}`, 'error');
+                }
+            } catch (error) {
+                log(`❌ Erro: ${error.message}`, 'error');
+            }
+        }
+
+        // Carregar dados iniciais
+        log('🚀 Teste de API carregado! Use os botões acima para testar.');
+    </script>
+</body>
+</html>

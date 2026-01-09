@@ -1,3 +1,39 @@
+/* Novo card integrado de info + mapa */
+.info-mapa-card {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.info-mapa-flex {
+  display: flex;
+  flex-direction: row;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}
+
+.info-block {
+  flex: 2;
+  min-width: 260px;
+}
+
+.mapa-block {
+  flex: 1.2;
+  min-width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.info-btns {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
 /* ============================================
    LOCALIZAÇÃO PAGE - OFÍCIO CORTES
    ============================================ */

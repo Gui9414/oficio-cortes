@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, enableNetwork } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 import { getAnalytics } from 'firebase/analytics';
 
@@ -42,7 +42,25 @@ if (typeof window !== 'undefined' && import.meta.env.PROD && app) {
 
 // Serviços com proteção contra app null
 export const auth = app ? getAuth(app) : null;
-export const db = app ? getFirestore(app) : null;
+
+// Inicializar Firestore com configurações
+let db = null;
+if (app) {
+  try {
+    db = getFirestore(app);
+    
+    // Garantir que o Firestore está online
+    enableNetwork(db).catch((err) => {
+      console.warn('Erro ao ativar rede do Firestore:', err);
+    });
+    
+    console.log('✅ Firestore inicializado e online');
+  } catch (error) {
+    console.error('❌ Erro ao inicializar Firestore:', error);
+  }
+}
+
+export { db };
 export const storage = app ? getStorage(app) : null;
 
 export default app;

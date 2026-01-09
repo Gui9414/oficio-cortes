@@ -1,0 +1,500 @@
+Attached HTML and CSS Context
+
+<img src="/logo-oficio.png" alt="Ofício Cortes" class="logo-img">
+
+
+/* Matched Rule from user-agent */
+video, canvas, img {
+  overflow-x: clip;
+  overflow-y: clip;
+  overflow-clip-margin: content-box;
+}
+
+/* Matched Rule from regular */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Matched Rule from regular */
+.logo-img {
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+  height: 45px;
+  width: auto;
+  object-fit: contain;
+  filter: brightness(1.1);
+}
+
+/* Matched Rule from regular */
+.logo-img {
+  height: 35px;
+  height: 35px;
+}
+
+/* Inherited from ancestor level 1 (user-agent) */
+a:-webkit-any-link {
+  color: -webkit-link;
+  text-decoration-line: underline;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+  cursor: pointer;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+a {
+  color: var(--cor-silver);
+  text-decoration: none;
+  transition: color var(--transicao-rapida);
+  color: var(--cor-silver);
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+/* Inherited from ancestor level 1 (regular) */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  transition: transform var(--transicao-media);
+  display: flex;
+  align-items: center;
+  row-gap: 0.75rem;
+  column-gap: 0.75rem;
+  text-decoration-line: none;
+  text-decoration-thickness: initial;
+  text-decoration-style: initial;
+  text-decoration-color: initial;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 2 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.header-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  gap: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  padding-right: 0px;
+  padding-bottom: 1rem;
+  padding-left: 0px;
+  row-gap: 2rem;
+  column-gap: 2rem;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.header-content {
+  padding: 0.75rem 0;
+  padding-top: 0.75rem;
+  padding-right: 0px;
+  padding-bottom: 0.75rem;
+  padding-left: 0px;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+  padding-top: 0px;
+  padding-right: 2rem;
+  padding-bottom: 0px;
+  padding-left: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Inherited from ancestor level 2 (regular) */
+.header-content {
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+  flex-direction: column;
+  row-gap: 1rem;
+  column-gap: 1rem;
+  text-align: center;
+}
+
+/* Inherited from ancestor level 3 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 3 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--espacamento-md);
+  max-width: 1200px;
+  margin-top: 0px;
+  margin-right: auto;
+  margin-bottom: 0px;
+  margin-left: auto;
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.container {
+  padding: 0 var(--espacamento-md);
+}
+
+/* Inherited from ancestor level 3 (regular) */
+.container {
+  padding: 0 var(--espacamento-sm);
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+article, aside, footer, header, hgroup, main, nav, search, section {
+  display: block;
+}
+
+/* Inherited from ancestor level 4 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 4 (regular) */
+.header {
+  background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 100%);
+  border-bottom: 2px solid var(--cor-cinza-queimado);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--sombra-lg);
+  position: sticky;
+  top: 0px;
+  z-index: 1000;
+  box-shadow: var(--sombra-lg);
+}
+
+/* Inherited from ancestor level 5 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 5 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 5 (regular) */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Inherited from ancestor level 6 (user-agent) */
+div {
+  display: block;
+}
+
+/* Inherited from ancestor level 6 (user-agent) */
+address, blockquote, center, div, figure, figcaption, footer, form, header, hr, legend, listing, main, p, plaintext, pre, summary, xmp, article, aside, h1, h2, h3, h4, h5, h6, hgroup, nav, section, search, table, caption, colgroup, col, thead, tbody, tfoot, tr, td, th, dir, dd, dl, dt, menu, ol, ul, li, bdi, output, [dir="ltr" i], [dir="rtl" i], [dir="auto" i] {
+  unicode-bidi: isolate;
+}
+
+/* Inherited from ancestor level 6 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 7 (user-agent) */
+body {
+  display: block;
+  margin-top: 8px;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  margin-left: 8px;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+body {
+  font-family: var(--font-texto);
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: var(--font-texto);
+  background-color: var(--cor-preto);
+  color: var(--cor-branco);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Inherited from ancestor level 7 (regular) */
+body {
+  font-size: 15px;
+  font-size: 15px;
+}
+
+/* Inherited from ancestor level 8 (user-agent) */
+html {
+  display: block;
+}
+
+/* Inherited from ancestor level 8 (user-agent) */
+:root {
+  view-transition-name: root;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  margin-top: 0px;
+  margin-right: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  padding-top: 0px;
+  padding-right: 0px;
+  padding-bottom: 0px;
+  padding-left: 0px;
+  box-sizing: border-box;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+html {
+  scroll-behavior: smooth;
+  scroll-behavior: smooth;
+}
+
+/* Inherited from ancestor level 8 (regular) */
+:root {
+  --cor-preto: #000000;
+  --cor-preto-suave: #0D0D0D;
+  --cor-cinza-carvao: #1C1C1C;
+  --cor-cinza-escuro: #262626;
+  --cor-cinza-queimado: #404040;
+  --cor-cinza-medio: #595959;
+  --cor-cinza-neutro: #737373;
+  --cor-cinza-claro: #8C8C8C;
+  --cor-cinza-prata: #A6A6A6;
+  --cor-cinza-perola: #BFBFBF;
+  --cor-cinza-suave: #D9D9D9;
+  --cor-branco-sujo: #F2F2F2;
+  --cor-branco: #FFFFFF;
+  --cor-silver: #C0C0C0;
+  --cor-silver-escuro: #999999;
+  --cor-silver-claro: #E6E6E6;
+  --cor-platina: #E5E4E2;
+  --cor-fundo: var(--cor-branco-sujo);
+  --cor-texto: var(--cor-cinza-escuro);
+  --cor-texto-claro: var(--cor-cinza-neutro);
+  --cor-card: var(--cor-branco);
+  --cor-borda: var(--cor-cinza-suave);
+  --cor-destaque: var(--cor-cinza-queimado);
+  --gradiente-dark: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 50%, var(--cor-cinza-escuro) 100%);
+  --gradiente-silver: linear-gradient(135deg, var(--cor-cinza-prata) 0%, var(--cor-silver) 50%, var(--cor-cinza-perola) 100%);
+  --gradiente-smoke: linear-gradient(135deg, var(--cor-cinza-neutro) 0%, var(--cor-cinza-claro) 50%, var(--cor-cinza-prata) 100%);
+  --gradiente-pearl: linear-gradient(135deg, var(--cor-cinza-suave) 0%, var(--cor-branco-sujo) 50%, var(--cor-branco) 100%);
+  --font-titulo: 'Playfair Display', serif;
+  --font-texto: 'Montserrat', sans-serif;
+  --espacamento-xs: 0.5rem;
+  --espacamento-sm: 1rem;
+  --espacamento-md: 1.5rem;
+  --espacamento-lg: 2rem;
+  --espacamento-xl: 3rem;
+  --sombra-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --sombra-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --sombra-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --sombra-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+  --transicao-rapida: 0.2s ease;
+  --transicao-media: 0.3s ease;
+  --transicao-lenta: 0.5s ease;
+  --cor-preto: #000000;
+  --cor-preto-suave: #0D0D0D;
+  --cor-cinza-carvao: #1C1C1C;
+  --cor-cinza-escuro: #262626;
+  --cor-cinza-queimado: #404040;
+  --cor-cinza-medio: #595959;
+  --cor-cinza-neutro: #737373;
+  --cor-cinza-claro: #8C8C8C;
+  --cor-cinza-prata: #A6A6A6;
+  --cor-cinza-perola: #BFBFBF;
+  --cor-cinza-suave: #D9D9D9;
+  --cor-branco-sujo: #F2F2F2;
+  --cor-branco: #FFFFFF;
+  --cor-silver: #C0C0C0;
+  --cor-silver-escuro: #999999;
+  --cor-silver-claro: #E6E6E6;
+  --cor-platina: #E5E4E2;
+  --cor-fundo: var(--cor-branco-sujo);
+  --cor-texto: var(--cor-cinza-escuro);
+  --cor-texto-claro: var(--cor-cinza-neutro);
+  --cor-card: var(--cor-branco);
+  --cor-borda: var(--cor-cinza-suave);
+  --cor-destaque: var(--cor-cinza-queimado);
+  --gradiente-dark: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 50%, var(--cor-cinza-escuro) 100%);
+  --gradiente-silver: linear-gradient(135deg, var(--cor-cinza-prata) 0%, var(--cor-silver) 50%, var(--cor-cinza-perola) 100%);
+  --gradiente-smoke: linear-gradient(135deg, var(--cor-cinza-neutro) 0%, var(--cor-cinza-claro) 50%, var(--cor-cinza-prata) 100%);
+  --gradiente-pearl: linear-gradient(135deg, var(--cor-cinza-suave) 0%, var(--cor-branco-sujo) 50%, var(--cor-branco) 100%);
+  --font-titulo: 'Playfair Display', serif;
+  --font-texto: 'Montserrat', sans-serif;
+  --espacamento-xs: 0.5rem;
+  --espacamento-sm: 1rem;
+  --espacamento-md: 1.5rem;
+  --espacamento-lg: 2rem;
+  --espacamento-xl: 3rem;
+  --sombra-sm: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --sombra-md: 0 4px 8px rgba(0, 0, 0, 0.4);
+  --sombra-lg: 0 8px 16px rgba(0, 0, 0, 0.5);
+  --sombra-xl: 0 12px 24px rgba(0, 0, 0, 0.6);
+  --transicao-rapida: 0.2s ease;
+  --transicao-media: 0.3s ease;
+  --transicao-lenta: 0.5s ease;
+}

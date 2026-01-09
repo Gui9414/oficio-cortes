@@ -1,0 +1,48 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Função para verificar se é admin
+    function isAdmin() {
+      return request.auth != null && 
+             exists(/databases/$(database)/documents/usuarios/$(request.auth.uid)) &&
+             get(/databases/$(database)/documents/usuarios/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Usuários - apenas admins podem ler/escrever
+    match /usuarios/{userId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Barbeiros - leitura pública, escrita apenas admin
+    match /barbeiros/{barbeiroId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Serviços - leitura pública, escrita apenas admin
+    match /servicos/{servicoId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // Agendamentos - criar público (sem login), ler/modificar apenas admin
+    match /agendamentos/{agendamentoId} {
+      allow read: if isAdmin();
+      allow create: if true; // Permitir criação pública
+      allow update, delete: if isAdmin();
+    }
+    
+    // Configurações - apenas admin
+    match /configuracoes/{configId} {
+      allow read, write: if isAdmin();
+    }
+    
+    // Produtos - leitura pública, escrita apenas admin
+    match /produtos/{produtoId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+  }
+}

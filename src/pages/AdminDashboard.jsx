@@ -1,16 +1,72 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Calendar, Clock, Users, Settings } from 'lucide-react';
+import { useAuth } from '../contexts/AuthContext';
+import api from '../services/api';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
+  const { user } = useAuth();
   const [estatisticas, setEstatisticas] = useState({
-    receitaDia: 450,
-    receitaSemana: 2100,
-    receitaMes: 8500,
-    agendamentosDia: 12
+    receitaDia: 0,
+    receitaSemana: 0,
+    receitaMes: 0,
+    agendamentosDia: 0
   });
-  const [carregando, setCarregando] = useState(false);
+  const [carregando, setCarregando] = useState(true);
+
+  useEffect(() => {
+    carregarEstatisticas();
+  }, []);
+
+  const carregarEstatisticas = async () => {
+    try {
+      const hoje = new Date().toISOString().split('T')[0];
+      const response = await api.get(`/agendamentos?data=${hoje}`);
+      
+      const agendamentos = response.data || [];
+      
+      // Calcular estatísticas reais
+      const agora = new Date();
+      const inicioDia = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate());
+      const inicioSemana = new Date(agora.getFullYear(), agora.getMonth(), agora.getDate() - agora.getDay());
+      const inicioMes = new Date(agora.getFullYear(), agora.getMonth(), 1);
+      
+      let receitaDia = 0;
+      let receitaSemana = 0;
+      let receitaMes = 0;
+      let agendamentosDia = 0;
+      
+      agendamentos.forEach(agendamento => {
+        const dataAgendamento = new Date(agendamento.data);
+        const preco = agendamento.servico?.preco || 0;
+        
+        if (dataAgendamento >= inicioDia && agendamento.status === 'concluido') {
+          receitaDia += preco;
+          agendamentosDia++;
+        }
+        
+        if (dataAgendamento >= inicioSemana && agendamento.status === 'concluido') {
+          receitaSemana += preco;
+        }
+        
+        if (dataAgendamento >= inicioMes && agendamento.status === 'concluido') {
+          receitaMes += preco;
+        }
+      });
+      
+      setEstatisticas({
+        receitaDia,
+        receitaSemana,
+        receitaMes,
+        agendamentosDia
+      });
+    } catch (error) {
+      console.error('Erro ao carregar estatísticas:', error);
+    } finally {
+      setCarregando(false);
+    }
+  };
 
   if (carregando) {
     return (
@@ -23,9 +79,15 @@ const AdminDashboard = () => {
 
   return (
     <div className="admin-dashboard">
+      {/* Seção de Agendamentos Detalhados */}
+      <div className="admin-agendamentos-section">
+        <h2>Ver Agendamentos</h2>
+        <p>Acompanhe todos os agendamentos por dia, semana ou mês, com detalhes do cliente e serviço.</p>
+        <Link to="/admin/agendamentos" className="btn-agendamentos">Ver Agendamentos</Link>
+      </div>
       <div className="admin-header">
         <h1>Painel Administrativo</h1>
-        <p>Bem-vindo ao painel de controle do Ofício Cortes</p>
+        <p>Bem-vindo, {user?.nome || user?.email || 'Guilherme'}!</p>
       </div>
 
       {/* Cards de Estatísticas */}
@@ -92,142 +154,6 @@ const AdminDashboard = () => {
             <h3>Loja</h3>
             <p>Visualizar produtos</p>
           </Link>
-        </div>
-      </div>
-    </div>
-  );
-};
-
-export default AdminDashboard;
-          </Link>
-        </div>
-
-        {/* Estatísticas */}
-        <div className="estatisticas-grid">
-          <div className="estat-card card">
-            <div className="estat-icone">
-              <FaDollarSign />
-            </div>
-            <div className="estat-info">
-              <p className="estat-label">Receita do Dia</p>
-              <h2 className="estat-valor">R$ {estatisticas.receitaDia.toFixed(2)}</h2>
-            </div>
-          </div>
-
-          <div className="estat-card card">
-            <div className="estat-icone">
-              <Calendar />
-            </div>
-            <div className="estat-info">
-              <p className="estat-label">Receita da Semana</p>
-              <h2 className="estat-valor">R$ {estatisticas.receitaSemana.toFixed(2)}</h2>
-            </div>
-          </div>
-
-          <div className="estat-card card">
-            <div className="estat-icone">
-              <Clock />
-            </div>
-            <div className="estat-info">
-              <p className="estat-label">Receita do Mês</p>
-              <h2 className="estat-valor">R$ {estatisticas.receitaMes.toFixed(2)}</h2>
-            </div>
-          </div>
-
-          <div className="estat-card card">
-            <div className="estat-icone">
-              <Users />
-            </div>
-            <div className="estat-info">
-              <p className="estat-label">Agendamentos Hoje</p>
-              <h2 className="estat-valor">{estatisticas.agendamentosDia}</h2>
-            </div>
-          </div>
-        </div>
-
-        {/* Filtro de Data */}
-        <div className="filtro-data">
-          <label>
-            <Calendar /> Filtrar por Data
-          </label>
-          <input
-            type="date"
-            value={filtroData}
-            onChange={(e) => setFiltroData(e.target.value)}
-          />
-        </div>
-
-        {/* Lista de Agendamentos */}
-        <div className="agendamentos-container card">
-          <h2>Agendamentos</h2>
-          
-          {carregando ? (
-            <div className="loading-container">
-              <div className="loading"></div>
-            </div>
-          ) : agendamentos.length > 0 ? (
-            <div className="agendamentos-lista">
-              {agendamentos.map(agendamento => (
-                <div key={agendamento._id} className="agendamento-item">
-                  <div className="agendamento-info">
-                    <div className="agendamento-horario">
-                      <Clock />
-                      <strong>{formatarHorario(agendamento.horario)}</strong>
-                    </div>
-                    <div className="agendamento-detalhes">
-                      <p className="cliente-nome">
-                        <Users /> <strong>{agendamento.cliente.nome}</strong>
-                      </p>
-                      <p className="cliente-email">
-                        📧 {agendamento.cliente.email}
-                      </p>
-                      {agendamento.cliente.telefone && (
-                        <p className="cliente-telefone">
-                          📱 {agendamento.cliente.telefone}
-                        </p>
-                      )}
-                      <p className="servico-nome">
-                        ✂️ {agendamento.servico.nome}
-                      </p>
-                      <p className="servico-preco">
-                        💰 R$ {agendamento.servico.preco.toFixed(2)}
-                      </p>
-                      <p className="agendamento-data">
-                        📅 {new Date(agendamento.data).toLocaleDateString('pt-BR')}
-                      </p>
-                    </div>
-                  </div>
-                  
-                  <div className="agendamento-acoes">
-                    <span className={`badge ${getStatusBadge(agendamento.status).classe}`}>
-                      {getStatusBadge(agendamento.status).texto}
-                    </span>
-                    
-                    {agendamento.status === 'confirmado' && (
-                      <div className="acoes-buttons">
-                        <button
-                          className="btn-acao btn-concluir"
-                          onClick={() => handleAtualizarStatus(agendamento._id, 'concluido')}
-                          title="Marcar como concluído"
-                        >
-                          <FaCheck />
-                        </button>
-                        <button
-                          className="btn-acao btn-cancelar"
-                          onClick={() => handleAtualizarStatus(agendamento._id, 'cancelado')}
-                          title="Cancelar"
-                        >
-                          <FaTimes />
-                        </button>
-                      </div>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <p className="sem-agendamentos">Nenhum agendamento para esta data</p>
-          )}
         </div>
       </div>
     </div>

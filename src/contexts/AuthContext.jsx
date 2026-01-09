@@ -94,7 +94,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const isAdmin = () => {
-    return user?.tipo === 'admin' || user?.role === 'admin';
+    console.log('🔍 Verificando admin - User:', user);
+    console.log('🔍 user.tipo:', user?.tipo);
+    console.log('🔍 user.role:', user?.role);
+    return user?.tipo === 'admin' || user?.role === 'admin' || user?.tipo === 'barbeiro';
   };
 
   const value = {

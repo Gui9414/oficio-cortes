@@ -1,6 +1,17 @@
 import api from './api';
 
 export const agendamentoService = {
+  // Criar agendamento público (sem login)
+  async criarPublico(dados) {
+    try {
+      // Corrigido para endpoint compatível com backend atual
+      const response = await api.post('/agendamentos', dados);
+      return response.data;
+    } catch (error) {
+      throw new Error(error.response?.data?.message || 'Erro ao criar agendamento');
+    }
+  },
+
   // Criar novo agendamento
   async criar(dados) {
     try {

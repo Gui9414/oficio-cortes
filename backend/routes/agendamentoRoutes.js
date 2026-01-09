@@ -15,6 +15,59 @@ const servicos = [
   { id: 5, nome: 'Tratamento Capilar', preco: 80, duracao: 60 },
 ];
 
+// @route   POST /api/agendamentos/publico
+// @desc    Criar agendamento público (sem login)
+// @access  Public
+router.post('/publico', async (req, res) => {
+  try {
+    const { nomeCliente, telefoneCliente, barbeiroId, servicoId, data, horario } = req.body;
+
+    // Validações
+    if (!nomeCliente || !telefoneCliente || !barbeiroId || !servicoId || !data || !horario) {
+      return res.status(400).json({ message: 'Preencha todos os campos' });
+    }
+
+    // Buscar serviço
+    const servico = servicos.find(s => s.id === parseInt(servicoId));
+    if (!servico) {
+      return res.status(400).json({ message: 'Serviço não encontrado' });
+    }
+
+    // Verificar se já existe agendamento nesse horário
+    const agendamentoExiste = await Agendamento.findOne({
+      barbeiro: barbeiroId,
+      data: new Date(data),
+      horario,
+      status: { $ne: 'cancelado' }
+    });
+
+    if (agendamentoExiste) {
+      return res.status(400).json({ message: 'Horário já ocupado' });
+    }
+
+    // Criar agendamento público
+    const agendamento = await Agendamento.create({
+      cliente: {
+        nome: nomeCliente,
+        telefone: telefoneCliente
+      },
+      barbeiro: barbeiroId,
+      servico: {
+        nome: servico.nome,
+        preco: servico.preco,
+        duracao: servico.duracao
+      },
+      data: new Date(data),
+      horario,
+      status: 'confirmado'
+    });
+
+    res.status(201).json(agendamento);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
 // @route   POST /api/agendamentos
 // @desc    Criar novo agendamento
 // @access  Private

@@ -31,10 +31,10 @@ const Footer = () => {
           <div className="footer-coluna">
             <h4>Links Rápidos</h4>
             <ul className="footer-links">
-              <li><Link to="/">Início</Link></li>
-              <li><Link to="/agendamento">Agendar Horário</Link></li>
-              <li><Link to="/loja">Loja</Link></li>
-              <li><Link to="/localizacao">Localização</Link></li>
+              <li><a href="/">Início</a></li>
+              <li><a href="/agendamento">Agendar Horário</a></li>
+              <li><a href="/loja">Loja</a></li>
+              <li><a href="/localizacao">Localização</a></li>
             </ul>
           </div>
 
@@ -42,8 +42,7 @@ const Footer = () => {
           <div className="footer-coluna">
             <h4>Horário de Funcionamento</h4>
             <ul className="footer-horarios">
-              <li><span>Segunda a Sexta</span> <strong>09:00 - 20:00</strong></li>
-              <li><span>Sábado</span> <strong>09:00 - 18:00</strong></li>
+              <li><span>Segunda a Sábado</span> <strong>12:00 - 18:00</strong></li>
               <li><span>Domingo</span> <strong>Fechado</strong></li>
             </ul>
           </div>

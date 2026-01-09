@@ -249,12 +249,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1.5rem;
-  background: var(--cor-cinza-escuro);
-  border: 2px solid var(--cor-cinza-claro);
-  border-radius: 10px;
-  margin-bottom: 1rem;
+  padding: 2rem;
+  background: linear-gradient(135deg, var(--cor-cinza-carvao) 0%, var(--cor-cinza-escuro) 100%);
+  border: 2px solid var(--cor-cinza-queimado);
+  border-radius: 15px;
+  margin-bottom: 1.25rem;
   gap: 2rem;
+  transition: all var(--transicao-media);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.servico-item:hover,
+.produto-item:hover {
+  border-color: var(--cor-silver);
+  transform: translateX(8px) translateY(-2px);
+  box-shadow: 0 8px 24px rgba(192, 192, 192, 0.2);
+  background: linear-gradient(135deg, var(--cor-cinza-escuro) 0%, var(--cor-cinza-carvao) 100%);
 }
 
 .servico-info,
@@ -303,35 +313,65 @@
 .servico-acoes,
 .produto-acoes {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.75rem;
+  flex-wrap: wrap;
 }
 
 .btn-acao {
-  padding: 0.6rem 1.2rem;
+  padding: 1rem 2rem;
   border: none;
-  border-radius: 5px;
-  font-weight: 600;
+  border-radius: 10px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all var(--transicao-rapida);
+  transition: all var(--transicao-media);
   white-space: nowrap;
+  font-size: 1.05rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-acao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+.btn-acao:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-acao:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
 }
 
 .btn-ativo {
-  background: var(--cor-silver);
+  background: linear-gradient(135deg, var(--cor-silver) 0%, var(--cor-cinza-prata) 100%);
   color: var(--cor-preto);
+  border: 3px solid var(--cor-silver);
 }
 
 .btn-ativo:hover {
-  opacity: 0.8;
+  background: linear-gradient(135deg, var(--cor-cinza-prata) 0%, var(--cor-silver-claro) 100%);
+  box-shadow: 0 6px 20px rgba(192, 192, 192, 0.4);
 }
 
 .btn-remover {
-  background: #dc3545;
+  background: linear-gradient(135deg, #dc3545 0%, #c82333 100%);
   color: white;
+  border: 3px solid #dc3545;
 }
 
 .btn-remover:hover {
-  background: #c82333;
+  background: linear-gradient(135deg, #c82333 0%, #bd2130 100%);
+  border-color: #bd2130;
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.4);
 }
 
 /* ALERTS */

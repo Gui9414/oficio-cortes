@@ -1,0 +1,107 @@
+ .btn-cancelar-agendamento {
+  margin-top: 6px;
+  background: #c0392b;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 16px;
+  font-size: 0.87rem;
+  font-weight: 500;
+  cursor: pointer;
+  box-shadow: var(--sombra-sm);
+  transition: background 0.2s;
+  min-width: 110px;
+  max-width: 140px;
+  width: 130px;
+  text-align: center;
+}
+.btn-cancelar-agendamento:hover {
+  background: #e74c3c;
+}
+.agendamento-cancelado {
+  margin-top: 10px;
+  color: #e74c3c;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.admin-agendamentos-page {
+  padding: 32px;
+  background: var(--cor-preto);
+  min-height: 100vh;
+}
+.admin-agendamentos-page h1 {
+  font-size: 2rem;
+  margin-bottom: 24px;
+  color: var(--cor-silver);
+}
+.agendamentos-filtros {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+.agendamentos-filtros select,
+.agendamentos-filtros input[type="date"] {
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid var(--cor-cinza-queimado);
+  background: var(--cor-cinza-carvao);
+  color: var(--cor-branco);
+  font-size: 1rem;
+}
+.agendamentos-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+ .agendamento-card {
+  background: var(--cor-cinza-carvao);
+  border-radius: 12px;
+  box-shadow: var(--sombra-md);
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid var(--cor-cinza-queimado);
+  transition: box-shadow 0.2s, border-color 0.2s;
+}
+.agendamento-card:hover {
+  box-shadow: var(--sombra-xl);
+  border-color: var(--cor-silver);
+}
+ .agendamento-horario {
+  background: var(--cor-preto);
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  min-width: 110px;
+  font-weight: 600;
+  color: var(--cor-silver);
+  font-size: 1.1rem;
+  box-shadow: var(--sombra-sm);
+}
+.agendamento-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 1.08rem;
+  color: var(--cor-branco);
+}
+.agendamento-info strong {
+  font-size: 1.15rem;
+  color: var(--cor-silver);
+  margin-bottom: 2px;
+}
+.agendamento-info span {
+  color: var(--cor-cinza-prata);
+}
+.loading {
+  font-size: 1.2rem;
+  color: var(--cor-cinza-prata);
+  margin-top: 32px;
+}

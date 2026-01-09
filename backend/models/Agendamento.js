@@ -2,9 +2,9 @@ import mongoose from 'mongoose';
 
 const agendamentoSchema = new mongoose.Schema({
   cliente: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Usuario',
-    required: true
+    type: mongoose.Schema.Types.Mixed,
+    required: true,
+    // Pode ser ObjectId (usuário logado) ou Object (dados diretos)
   },
   barbeiro: {
     type: mongoose.Schema.Types.ObjectId,

@@ -80,30 +80,52 @@ const AdminConfiguracoes = () => {
   };
 
   const adicionarServico = async () => {
+    console.log('🔵 adicionarServico chamado');
+    console.log('📝 Dados do novo serviço:', novoServico);
+    
+    // Validação
     if (!novoServico.nome || !novoServico.preco || !novoServico.duracao) {
+      console.log('❌ Validação falhou - campos vazios');
       mostrarMensagem('erro', 'Preencha todos os campos obrigatórios');
       return;
     }
 
+    console.log('✅ Validação passou');
     setSalvando(true);
+    
     try {
-      console.log('Adicionando serviço:', novoServico); // Debug
-      const response = await api.post('/configuracoes/servicos', {
+      const dadosServico = {
         nome: novoServico.nome,
         preco: parseFloat(novoServico.preco),
         duracao: parseInt(novoServico.duracao),
         descricao: novoServico.descricao
-      });
-      console.log('Serviço adicionado:', response.data); // Debug
+      };
       
+      console.log('📡 Enviando POST para /configuracoes/servicos com:', dadosServico);
+      const response = await api.post('/configuracoes/servicos', dadosServico);
+      console.log('✅ Resposta recebida:', response.data);
+      
+      // Limpa o formulário
       setNovoServico({ nome: '', preco: '', duracao: '', descricao: '' });
+      console.log('🧹 Formulário limpo');
+      
+      // Recarrega os dados
       await carregarConfiguracoes();
+      console.log('🔄 Configurações recarregadas');
+      
       mostrarMensagem('sucesso', 'Serviço adicionado com sucesso!');
+      console.log('🎉 Serviço adicionado com sucesso!');
     } catch (error) {
-      console.error('Erro ao adicionar serviço:', error); // Debug
-      mostrarMensagem('erro', 'Erro ao adicionar serviço');
+      console.error('❌ Erro ao adicionar serviço:', error);
+      console.error('Detalhes:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
+      mostrarMensagem('erro', `Erro ao adicionar serviço: ${error.response?.data?.message || error.message}`);
     } finally {
       setSalvando(false);
+      console.log('🔄 Estado salvando resetado para false');
     }
   };
 
@@ -124,22 +146,40 @@ const AdminConfiguracoes = () => {
   };
 
   const removerServico = async (id) => {
-    if (!window.confirm('Deseja realmente remover este serviço?')) return;
+    console.log('🗑️ removerServico chamado com ID:', id);
+    
+    if (!window.confirm('Deseja realmente remover este serviço?')) {
+      console.log('❌ Usuário cancelou a remoção');
+      return;
+    }
 
+    console.log('✅ Confirmação recebida, iniciando remoção...');
     setSalvando(true);
     try {
-      console.log('Removendo serviço com ID:', id);
-      await api.delete(`/configuracoes/servicos/${id}`);
+      console.log('📡 Fazendo DELETE request para: /configuracoes/servicos/' + id);
+      const response = await api.delete(`/configuracoes/servicos/${id}`);
+      console.log('✅ Resposta recebida:', response.data);
       
       // Atualiza o estado local imediatamente
-      setServicos(prevServicos => prevServicos.filter(s => s.id !== id));
+      setServicos(prevServicos => {
+        const novaLista = prevServicos.filter(s => s.id !== id);
+        console.log('📋 Lista atualizada. Antes:', prevServicos.length, 'Depois:', novaLista.length);
+        return novaLista;
+      });
       
       mostrarMensagem('sucesso', 'Serviço removido com sucesso!');
+      console.log('🎉 Serviço removido com sucesso!');
     } catch (error) {
-      console.error('Erro ao remover serviço:', error);
+      console.error('❌ Erro ao remover serviço:', error);
+      console.error('Detalhes do erro:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
       mostrarMensagem('erro', `Erro ao remover serviço: ${error.response?.data?.message || error.message}`);
     } finally {
       setSalvando(false);
+      console.log('🔄 Estado salvando resetado');
     }
   };
 
@@ -171,22 +211,40 @@ const AdminConfiguracoes = () => {
   };
 
   const removerProduto = async (id) => {
-    if (!window.confirm('Deseja realmente remover este produto?')) return;
+    console.log('🗑️ removerProduto chamado com ID:', id);
+    
+    if (!window.confirm('Deseja realmente remover este produto?')) {
+      console.log('❌ Usuário cancelou a remoção');
+      return;
+    }
 
+    console.log('✅ Confirmação recebida, iniciando remoção...');
     setSalvando(true);
     try {
-      console.log('Removendo produto com ID:', id);
-      await api.delete(`/produtos/${id}`);
+      console.log('📡 Fazendo DELETE request para: /produtos/' + id);
+      const response = await api.delete(`/produtos/${id}`);
+      console.log('✅ Resposta recebida:', response.data);
       
       // Atualiza o estado local imediatamente
-      setProdutos(prevProdutos => prevProdutos.filter(p => p._id !== id));
+      setProdutos(prevProdutos => {
+        const novaLista = prevProdutos.filter(p => p._id !== id);
+        console.log('📋 Lista atualizada. Antes:', prevProdutos.length, 'Depois:', novaLista.length);
+        return novaLista;
+      });
       
       mostrarMensagem('sucesso', 'Produto removido com sucesso!');
+      console.log('🎉 Produto removido com sucesso!');
     } catch (error) {
-      console.error('Erro ao remover produto:', error);
+      console.error('❌ Erro ao remover produto:', error);
+      console.error('Detalhes do erro:', {
+        message: error.message,
+        response: error.response?.data,
+        status: error.response?.status
+      });
       mostrarMensagem('erro', `Erro ao remover produto: ${error.response?.data?.message || error.message}`);
     } finally {
       setSalvando(false);
+      console.log('🔄 Estado salvando resetado');
     }
   };
 

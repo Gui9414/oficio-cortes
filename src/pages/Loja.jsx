@@ -23,42 +23,9 @@ const Loja = () => {
     { id: 'acessorio', nome: 'Acessórios' }
   ];
 
+
   useEffect(() => {
-    // Carregar produtos mock diretamente
-    setProdutos([
-      {
-        _id: '1',
-        nome: 'Pomada Modeladora',
-        preco: 35.90,
-        categoria: 'pomada',
-        descricao: 'Pomada para modelar e fixar o cabelo',
-        estoque: 15
-      },
-      {
-        _id: '2',
-        nome: 'Minoxidil 5%',
-        preco: 89.90,
-        categoria: 'minoxidil',
-        descricao: 'Tratamento para crescimento capilar',
-        estoque: 8
-      },
-      {
-        _id: '3',
-        nome: 'Creme Pós-Barba',
-        preco: 24.90,
-        categoria: 'creme',
-        descricao: 'Hidrata e acalma a pele após o barbear',
-        estoque: 12
-      },
-      {
-        _id: '4',
-        nome: 'Óleo para Barba',
-        preco: 29.90,
-        categoria: 'acessorio',
-        descricao: 'Óleo nutritivo para barba sedosa',
-        estoque: 10
-      }
-    ]);
+    carregarProdutos();
   }, []);
 
   const carregarProdutos = async () => {
@@ -141,12 +108,12 @@ const Loja = () => {
   };
 
   return (
-    <div className="loja-page" style={{background: 'linear-gradient(135deg, #000000 0%, #1A1A1A 100%)', minHeight: '100vh', color: '#C0C0C0'}}>
+    <div className="loja-page" style={{background: 'linear-gradient(135deg, #232323 0%, #363636 100%)', minHeight: '100vh', color: '#B0AFAF'}}>
       <div className="container">
         {/* Header */}
-        <div className="loja-header" style={{background: 'linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%)', color: '#C0C0C0', border: '2px solid #C0C0C0'}}>
-          <h1 style={{color: '#C0C0C0', textShadow: '0 2px 4px rgba(0,0,0,0.5)'}}>Nossa Loja</h1>
-          <p style={{color: '#D8D8D8'}}>Produtos profissionais para o seu cuidado pessoal</p>
+        <div className="loja-header" style={{background: 'linear-gradient(135deg, #232323 0%, #363636 100%)', color: '#B0AFAF', border: '2px solid #B0AFAF'}}>
+          <h1 style={{color: '#B0AFAF', textShadow: '0 2px 4px rgba(0,0,0,0.5)'}}>Produtos</h1>
+          <p style={{color: '#B0AFAF'}}>Produtos profissionais para o seu cuidado pessoal</p>
         </div>
 
         {/* Filtros e Busca */}
@@ -183,8 +150,8 @@ const Loja = () => {
         ) : produtosFiltrados.length > 0 ? (
           <div className="produtos-grid">
             {produtosFiltrados.map(produto => (
-              <div key={produto._id} className="produto-card card" style={{background: 'linear-gradient(135deg, #1a1a1a, #2d2d2d)', border: '2px solid #C0C0C0', borderRadius: '12px', padding: '1.5rem', color: '#C0C0C0', boxShadow: '0 8px 24px rgba(192, 192, 192, 0.1)'}}>
-                <div className="produto-imagem" style={{background: '#2d2d2d', height: '200px', borderRadius: '8px', marginBottom: '1rem', border: '1px solid #4A4A4A'}}>
+              <div key={produto._id} className="produto-card card" style={{background: 'linear-gradient(135deg, #232323, #363636)', border: '2px solid #B0AFAF', borderRadius: '12px', padding: '1.5rem', color: '#B0AFAF', boxShadow: '0 8px 24px rgba(176, 175, 175, 0.1)'}}>
+                <div className="produto-imagem" style={{background: '#232323', height: '200px', borderRadius: '8px', marginBottom: '1rem', border: '1px solid #363636'}}>
                   {produto.imagem ? (
                     <img src={produto.imagem} alt={produto.nome} style={{width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px'}} />
                   ) : (
@@ -195,18 +162,18 @@ const Loja = () => {
                 </div>
 
                 <div className="produto-info" style={{color: '#C0C0C0'}}>
-                  <h3 style={{color: '#1C1C1C', marginBottom: '0.5rem', fontWeight: 'bold'}}>{produto.nome}</h3>
-                  <p className="produto-descricao" style={{color: '#D8D8D8', marginBottom: '1rem', fontSize: '0.9rem'}}>{produto.descricao}</p>
+                  <h3 style={{color: '#B0AFAF', marginBottom: '0.5rem', fontWeight: 'bold'}}>{produto.nome}</h3>
+                  <p className="produto-descricao" style={{color: '#B0AFAF', marginBottom: '1rem', fontSize: '0.9rem'}}>{produto.descricao}</p>
 
                   <div className="produto-preco-container">
-                    <span className="preco" style={{color: '#1C1C1C', fontWeight: 'bold', fontSize: '1.3rem'}}>R$ {produto.preco.toFixed(2)}</span>
+                    <span className="preco" style={{color: '#B0AFAF', fontWeight: 'bold', fontSize: '1.3rem'}}>R$ {produto.preco.toFixed(2)}</span>
                   </div>
 
                   <div style={{display: 'flex', gap: '0.5rem', marginTop: '1rem'}}>
                     <button 
                       className="btn btn-primary btn-comprar"
                       onClick={() => handleComprar(produto)}
-                      style={{background: 'linear-gradient(135deg, #C0C0C0 0%, #D8D8D8 100%)', color: '#000', border: 'none', padding: '0.8rem 1.5rem', borderRadius: '8px', cursor: 'pointer', flex: 1, fontWeight: 'bold', transition: 'all 0.3s ease'}}
+                      style={{background: 'linear-gradient(135deg, #363636 0%, #232323 100%)', color: '#B0AFAF', border: 'none', padding: '0.8rem 1.5rem', borderRadius: '8px', cursor: 'pointer', flex: 1, fontWeight: 'bold', transition: 'all 0.3s ease'}}
                     >
                       <ShoppingCart size={16} style={{marginRight: '0.5rem'}} /> Comprar
                     </button>

@@ -1,270 +1,183 @@
 /* ============================================
-   HEADER - OFÍCIO CORTES
-   ============================================ */
 
-.header {
-  background: linear-gradient(135deg, var(--cor-preto) 0%, var(--cor-cinza-carvao) 100%);
-  border-bottom: 2px solid var(--cor-cinza-queimado);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  box-shadow: var(--sombra-lg);
-}
-
-.header-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
-  gap: 2rem;
-}
-
-/* Logo */
-.logo {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  text-decoration: none;
-  transition: transform var(--transicao-media);
-}
-
-.logo:hover {
-  transform: scale(1.02);
-}
-
-.logo-img {
-  height: 115px;
-  width: auto;
-  object-fit: contain;
-  filter: invert(1) brightness(1.5) contrast(1.8) saturate(1.2);
-  background: transparent;
-  border-radius: 50%;
-  box-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
-  transition: all var(--transicao-media);
-  image-rendering: -webkit-optimize-contrast;
-  image-rendering: crisp-edges;
-}
-
-.logo-img:hover {
-  filter: invert(1) brightness(1.7) contrast(1.5);
-  box-shadow: 0 0 35px rgba(255, 255, 255, 0.8);
-  transform: scale(1.05);
-}
-
-.logo-texto {
-  display: flex;
-  flex-direction: column;
-}
-
-.logo h1 {
-  font-family: var(--font-titulo);
-  font-size: clamp(0.85rem, 2vw, 1.3rem);
-  font-weight: 900;
-  color: var(--cor-branco);
-  letter-spacing: 1.5px;
-  margin: 0;
-  line-height: 1.1;
-}
-
-.logo-destaque {
-  color: var(--cor-silver) !important;
-  letter-spacing: 2.5px !important;
-  font-size: clamp(1rem, 2.5vw, 1.6rem) !important;
-}
-
-/* Navegação */
-.nav {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.nav a {
-  color: var(--cor-silver);
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border-bottom: 2px solid transparent;
-  transition: all var(--transicao-rapida);
-}
-
-.nav a:hover {
-  color: var(--cor-branco);
-  border-bottom-color: var(--cor-silver);
-}
-
-.btn-admin {
-  background: var(--cor-silver);
-  color: var(--cor-preto) !important;
-  padding: 0.5rem 1.5rem !important;
-  border-radius: 0;
-  font-weight: 700;
-}
-
-.btn-admin:hover {
-  background: var(--cor-branco);
-  border-bottom-color: transparent !important;
-}
-
-.btn-login {
-  color: var(--cor-branco) !important;
-}
-
-.btn-logout {
-  background: transparent;
-  color: var(--cor-silver);
-  font-weight: 500;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  border: none;
-  cursor: pointer;
-  transition: all var(--transicao-rapida);
-}
-
-.btn-logout:hover {
-  color: var(--cor-branco);
-}
-
-/* Menu Toggle (Mobile) */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  color: var(--cor-silver);
-  font-size: 1.5rem;
-  border: none;
-  cursor: pointer;
-  padding: 0.5rem;
-  transition: color var(--transicao-rapida);
-}
-
-.menu-toggle:hover {
-  color: var(--cor-branco);
-}
-
-/* Responsividade */
-@media (max-width: 992px) {
-  .header-content {
-    padding: 0.75rem 0;
-    flex-direction: row !important;
-    justify-content: flex-start;
-    align-items: center;
-    text-align: left;
-    gap: 1rem;
-  }
-
-  .logo-img {
-    height: 60px;
-  }
-
-  .logo {
-    order: 1;
-    flex-shrink: 0;
-  }
-
-  .menu-toggle {
-    display: block;
-    z-index: 1001;
-    order: 2;
-    margin-left: auto;
-    flex-shrink: 0;
-  }
-
-  .nav {
-    order: 3;
-  }
-
-  .nav {
-    position: fixed;
+  /* NOVO HEADER MODERNO */
+  .novo-header {
+    width: 100%;
+    background: var(--cor-preto);
+    border-bottom: 2px solid var(--cor-cinza-queimado);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.7);
+    position: sticky;
     top: 0;
-    right: -100%;
-    width: min(85%, 320px);
-    height: 100vh;
-    background: linear-gradient(180deg, var(--cor-cinza-escuro) 0%, var(--cor-preto) 100%);
-    flex-direction: column;
-    padding: 5rem 1.5rem 2rem;
-    gap: 0.5rem;
-    border-left: 3px solid var(--cor-silver);
-    transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.8);
-    overflow-y: auto;
+    z-index: 1000;
   }
 
-  .nav-aberto {
-    right: 0;
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    min-height: 0;
+    height: 0;
+    min-height: unset;
+    height: unset;
   }
 
-  .nav a {
-    width: 100%;
-    padding: 0.875rem 1rem;
-    border-bottom: 1px solid var(--cor-cinza-queimado);
-    border-left: 3px solid transparent;
-    font-size: 0.9rem;
-    justify-content: flex-start;
+   .novo-logo-img {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    box-shadow: 0 0 16px rgba(255,255,255,0.15);
+    background: #000;
+    object-fit: cover;
+    transition: transform 0.2s;
+    filter: invert(1) brightness(2) grayscale(1);
+  }
+   .novo-logo-img:hover {
+    transform: scale(1.07) rotate(-3deg);
   }
 
-  .nav a:hover {
-    border-left-color: var(--cor-silver);
-    border-bottom-color: var(--cor-cinza-queimado);
-    background: rgba(255, 255, 255, 0.05);
+  .novo-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    transition: right 0.3s;
   }
-
-  .btn-logout {
-    width: 100%;
-    justify-content: flex-start;
-    padding: 0.875rem 1rem;
-    border-bottom: 1px solid var(--cor-cinza-queimado);
-    font-size: 0.9rem;
-  }
-
-  .btn-admin {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-    margin-top: 0.5rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .header-content {
-    padding: 0.5rem 0;
-  }
-
-  .logo-img {
-    height: 70px;
-  }
-
-  .logo h1 {
-    font-size: 0.75rem;
+  .nav-link {
+    color: var(--cor-silver-claro);
+    font-weight: 600;
+    font-size: 1rem;
+    text-transform: uppercase;
     letter-spacing: 1px;
+    padding: 0.7rem 1.2rem;
+    border-radius: 8px;
+    background: transparent;
+    transition: background 0.2s, color 0.2s;
+    position: relative;
+    text-decoration: none;
+  }
+  .nav-link:hover, .nav-admin:hover {
+    background: var(--cor-cinza-queimado);
+    color: var(--cor-branco);
+  }
+  .nav-admin {
+    background: var(--cor-cinza-escuro);
+    color: var(--cor-silver);
+    font-weight: 700;
+    border-radius: 8px;
+    margin-left: 0.5rem;
+  }
+  .btn-login {
+    background: var(--cor-silver);
+    color: var(--cor-preto) !important;
+    font-weight: 700;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    margin-left: 0.5rem;
+    border: none;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn-login:hover {
+    background: var(--cor-branco);
+    color: var(--cor-cinza-escuro) !important;
+  }
+  .novo-logout {
+    background: transparent;
+    color: var(--cor-silver-claro);
+    font-weight: 600;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.7rem 1.2rem;
+    margin-left: 0.5rem;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+  }
+  .novo-logout:hover {
+    background: var(--cor-cinza-queimado);
+    color: var(--cor-branco);
   }
 
-  .logo-destaque {
-    font-size: 0.95rem !important;
-    letter-spacing: 1.5px !important;
+  /* Menu Hamburguer Moderno */
+  .novo-menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+    margin-left: 1rem;
+  }
+  .menu-bar {
+    width: 28px;
+    height: 3px;
+    background: var(--cor-silver);
+    margin: 4px 0;
+    border-radius: 2px;
+    transition: 0.3s;
+  }
+  .novo-menu-toggle.open .menu-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+  .novo-menu-toggle.open .menu-bar:nth-child(2) {
+    opacity: 0;
+  }
+  .novo-menu-toggle.open .menu-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
   }
 
-  .nav {
-    width: 100%;
-    padding: 4rem 1rem 2rem;
+  /* Responsivo */
+  @media (max-width: 900px) {
+    .header-inner {
+      padding: 0.5rem 1rem;
+    }
+    .novo-nav {
+      gap: 0.7rem;
+    }
   }
-
-  .nav a,
-  .btn-logout {
-    padding: 0.75rem 1rem;
-    font-size: 0.85rem;
+  @media (max-width: 700px) {
+    .novo-nav {
+      position: fixed;
+      top: 0;
+      right: -100vw;
+      width: 80vw;
+      max-width: 320px;
+      height: 100vh;
+      background: var(--cor-preto);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 5rem 2rem 2rem 2rem;
+      gap: 1rem;
+      box-shadow: -8px 0 32px rgba(0,0,0,0.8);
+      border-left: 2px solid var(--cor-cinza-queimado);
+      transition: right 0.3s;
+      z-index: 1050;
+    }
+    .novo-nav.open {
+      right: 0;
+    }
+    .novo-menu-toggle {
+      display: flex;
+    }
   }
-
-  .nav {
-    width: 100%;
+  @media (max-width: 480px) {
+    .header-inner {
+      padding: 0.3rem 0.5rem;
+    }
+    .novo-logo-img {
+      height: 48px;
+      width: 48px;
+    }
+    .novo-nav {
+      padding: 4rem 1rem 2rem 1rem;
+    }
+    .nav-link, .btn-login, .novo-logout {
+      font-size: 0.95rem;
+      padding: 0.6rem 1rem;
+    }
   }
-}
