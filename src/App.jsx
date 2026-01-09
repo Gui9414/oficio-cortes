@@ -1,3 +1,4 @@
+import WhatsappButton from './components/WhatsappButton';
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './contexts/AuthContext';
@@ -63,31 +64,31 @@ function App() {
               <Header />
               <main className="main-content">
                 <Routes>
-                {/* Rotas públicas */}
-                <Route path="/" element={<Home />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/loja" element={<Loja />} />
-                <Route path="/localizacao" element={<Localizacao />} />
-                <Route path="/agendamento" element={<Agendamento />} />
-                
-                {/* Rotas protegidas - Admin */}
-                <Route path="/admin" element={
-                  <ProtectedRoute>
-                    <AdminDashboard />
-                  </ProtectedRoute>
-                } />
-                <Route path="/admin/agendamentos" element={
-                  <ProtectedRoute>
-                    <AdminAgendamentos />
-                  </ProtectedRoute>
-                } />
-                <Route path="/admin/configuracoes" element={
-                  <ProtectedRoute>
-                    <AdminConfiguracoes />
-                  </ProtectedRoute>
-                } />
-              </Routes>
+                  {/* Rotas públicas */}
+                  <Route path="/" element={<Home />} />
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/loja" element={<Loja />} />
+                  <Route path="/localizacao" element={<Localizacao />} />
+                  <Route path="/agendamento" element={<Agendamento />} />
+                  {/* Rotas protegidas - Admin */}
+                  <Route path="/admin" element={
+                    <ProtectedRoute>
+                      <AdminDashboard />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/admin/agendamentos" element={
+                    <ProtectedRoute>
+                      <AdminAgendamentos />
+                    </ProtectedRoute>
+                  } />
+                  <Route path="/admin/configuracoes" element={
+                    <ProtectedRoute>
+                      <AdminConfiguracoes />
+                    </ProtectedRoute>
+                  } />
+                </Routes>
               </main>
+              <WhatsappButton />
               <Footer />
             </div>
           </AppProvider>
