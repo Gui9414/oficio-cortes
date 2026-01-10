@@ -199,6 +199,36 @@
     text-align: center;
   }
 
+    /* Centraliza os itens de contato e corrige alinhamento dos ícones no mobile */
+    .footer-contato {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .footer-contato li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    @media (max-width: 768px) {
+      .footer-contato li {
+        flex-direction: column;
+        gap: 0.2rem;
+      }
+      .footer-contato {
+        align-items: center;
+      }
+    }
+    .footer-contato svg {
+      margin: 0 0.3rem 0 0;
+      vertical-align: middle;
+    }
+
   .footer-logo {
     font-size: 1.5rem;
   }

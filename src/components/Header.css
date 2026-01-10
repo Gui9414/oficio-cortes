@@ -180,4 +180,25 @@
       font-size: 0.95rem;
       padding: 0.6rem 1rem;
     }
+      /* Centraliza logo e corrige alinhamento no mobile */
+      .novo-header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header-inner {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .novo-logo {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 0.2rem;
+      }
+      .novo-logo-img {
+        margin: 0 auto;
+        display: block;
+      }
   }

@@ -2,6 +2,9 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+
 dotenv.config();
 
 const app = express();
