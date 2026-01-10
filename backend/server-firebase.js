@@ -26,7 +26,11 @@ app.use(limiter);
 
 // Segurança: CORS restrito
 app.use(cors({
-  origin: ["http://localhost:3000", "https://seusite.com"],
+  origin: [
+    "http://localhost:3000",
+    "https://oficiocortes.com",
+    "https://www.oficiocortes.com"
+  ],
   methods: ["GET", "POST", "PUT", "DELETE"],
   credentials: true
 }));
