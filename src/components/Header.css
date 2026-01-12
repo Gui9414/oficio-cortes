@@ -43,15 +43,18 @@
     align-items: center;
     gap: 1.5rem;
     transition: right 0.3s;
-  }
-  .nav-link {
-    color: var(--cor-silver-claro);
-    font-weight: 600;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 0.7rem 1.2rem;
-    border-radius: 8px;
+    .novo-logo-img:hover {
+      transform: scale(1.07) rotate(-3deg);
+    }
+    .novo-logo-img {
+      height: 48px;
+      width: 48px;
+      border-radius: 50%;
+      box-shadow: none;
+      background: transparent;
+      object-fit: cover;
+      transition: transform 0.2s;
+    }
     background: transparent;
     transition: background 0.2s, color 0.2s;
     position: relative;
@@ -147,22 +150,30 @@
       right: -100vw;
       width: 80vw;
       max-width: 320px;
-      height: 100vh;
+      height: 100dvh;
+      min-height: 100dvh;
       background: var(--cor-preto);
       flex-direction: column;
       align-items: flex-start;
       padding: 5rem 2rem 2rem 2rem;
-      gap: 1rem;
+      gap: 1.2rem;
       box-shadow: -8px 0 32px rgba(0,0,0,0.8);
       border-left: 2px solid var(--cor-cinza-queimado);
       transition: right 0.3s;
-      z-index: 1050;
+      z-index: 1200;
     }
     .novo-nav.open {
       right: 0;
     }
     .novo-menu-toggle {
       display: flex;
+      z-index: 1300;
+    }
+    .nav-link, .btn-login, .novo-logout {
+      width: 100%;
+      text-align: left;
+      justify-content: flex-start;
+      padding-left: 0.5rem;
     }
   }
   @media (max-width: 480px) {
@@ -180,25 +191,24 @@
       font-size: 0.95rem;
       padding: 0.6rem 1rem;
     }
-      /* Centraliza logo e corrige alinhamento no mobile */
-      .novo-header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-      .header-inner {
-        flex-direction: column;
-        align-items: center;
-        gap: 0.5rem;
-      }
-      .novo-logo {
-        display: flex;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 0.2rem;
-      }
-      .novo-logo-img {
-        margin: 0 auto;
-        display: block;
-      }
+    .novo-header {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .header-inner {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .novo-logo {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-bottom: 0.2rem;
+    }
+    .novo-logo-img {
+      margin: 0 auto;
+      display: block;
+    }
   }

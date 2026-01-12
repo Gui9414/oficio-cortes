@@ -5,6 +5,13 @@ export const lojaService = {
   async listar(filtros = {}) {
     try {
       const response = await api.get('/produtos', { params: filtros });
+      // Garante que todos os produtos tenham _id (MongoDB)
+      if (Array.isArray(response.data)) {
+        return response.data.map(produto => ({
+          ...produto,
+          _id: produto._id || produto.id // fallback para compatibilidade
+        }));
+      }
       return response.data;
     } catch (error) {
       // Retorna produtos de exemplo se der erro

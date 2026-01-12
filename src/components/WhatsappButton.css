@@ -5,7 +5,7 @@
   bottom: 24px;
   z-index: 9999;
   background: transparent;
-  border: 2px solid var(--cor-silver);
+  border: none;
   outline: none;
   cursor: pointer;
   box-shadow: 0 4px 16px rgba(0,0,0,0.18);

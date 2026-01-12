@@ -18,9 +18,9 @@ const Home = () => {
 
   const carregarServicos = async () => {
     try {
-      const response = await api.get('/configuracoes');
-      if (response.data.servicos?.servicos) {
-        setServicos(response.data.servicos.servicos.filter(s => s.ativo));
+      const response = await api.get('/configuracoes/servicos');
+      if (Array.isArray(response.data)) {
+        setServicos(response.data.filter(s => s.ativo));
       } else {
         setServicos([]);
       }
@@ -141,11 +141,11 @@ const Home = () => {
               <p style={{textAlign: 'center', color: '#888', gridColumn: '1 / -1'}}>Nenhum serviço cadastrado</p>
             ) : (
               servicos.map(servico => (
-                <div key={servico.id} className="servico-card card" style={{position: 'relative'}}>
+                <div key={servico._id || servico.id} className="servico-card card" style={{position: 'relative'}}>
                   {isAdmin && (
                     <button
-                      onClick={() => removerServico(servico.id)}
-                      disabled={removendo === servico.id}
+                      onClick={() => removerServico(servico._id || servico.id)}
+                      disabled={removendo === (servico._id || servico.id)}
                       style={{
                         position: 'absolute',
                         top: '10px',
@@ -157,7 +157,7 @@ const Home = () => {
                         borderRadius: '6px',
                         cursor: 'pointer',
                         transition: 'all 0.3s ease',
-                        opacity: removendo === servico.id ? 0.5 : 1,
+                        opacity: removendo === (servico._id || servico.id) ? 0.5 : 1,
                         zIndex: 10
                       }}
                       title="Remover serviço"

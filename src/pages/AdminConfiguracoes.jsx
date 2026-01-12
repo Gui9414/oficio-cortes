@@ -45,20 +45,22 @@ const AdminConfiguracoes = () => {
 
   const carregarConfiguracoes = async () => {
     try {
-      console.log('Carregando configurações...'); // Debug
-      const response = await api.get('/configuracoes');
-      console.log('Resposta configurações:', response.data); // Debug
-      
-      if (response.data.horarios?.horariosFuncionamento) {
-        setHorarios(response.data.horarios.horariosFuncionamento);
+      // Carregar horários (mantém como está)
+      const horariosResponse = await api.get('/configuracoes/horarios');
+      if (horariosResponse.data?.horariosFuncionamento) {
+        setHorarios(horariosResponse.data.horariosFuncionamento);
       }
-      if (response.data.servicos?.servicos) {
-        console.log('Serviços carregados:', response.data.servicos.servicos); // Debug
-        setServicos(response.data.servicos.servicos);
+
+      // Carregar serviços diretamente do endpoint MongoDB
+      const servicosResponse = await api.get('/configuracoes/servicos');
+      if (Array.isArray(servicosResponse.data)) {
+        setServicos(servicosResponse.data);
+      } else {
+        setServicos([]);
       }
-      
+
+      // Carregar produtos
       const produtosResponse = await api.get('/produtos');
-      console.log('Produtos carregados:', produtosResponse.data); // Debug
       setProdutos(produtosResponse.data);
     } catch (error) {
       console.error('Erro ao carregar configurações:', error);
@@ -429,7 +431,7 @@ const AdminConfiguracoes = () => {
                   <p className="lista-vazia">Nenhum serviço cadastrado</p>
                 ) : (
                   servicos.map(servico => (
-                    <div key={servico.id} className="servico-item">
+                    <div key={servico._id || servico.id} className="servico-item">
                       <div className="servico-info">
                         <h4>{servico.nome}</h4>
                         <p className="servico-preco">R$ {servico.preco.toFixed(2)}</p>
@@ -439,13 +441,13 @@ const AdminConfiguracoes = () => {
                       <div className="servico-acoes">
                         <button
                           className="btn-acao btn-ativo"
-                          onClick={() => atualizarServico(servico.id, { ...servico, ativo: !servico.ativo })}
+                          onClick={() => atualizarServico(servico._id || servico.id, { ...servico, ativo: !servico.ativo })}
                         >
                           {servico.ativo ? '✅ Ativo' : '❌ Inativo'}
                         </button>
                         <button
                           className="btn-acao btn-remover"
-                          onClick={() => removerServico(servico.id)}
+                          onClick={() => removerServico(servico._id || servico.id)}
                           disabled={salvando}
                         >
                           {salvando ? '⏳' : '🗑️'} {salvando ? 'Removendo...' : 'Remover'}

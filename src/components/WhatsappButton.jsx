@@ -9,7 +9,7 @@ const WhatsappButton = () => (
     rel="noopener noreferrer"
     aria-label="Fale conosco no WhatsApp"
   >
-     <img src="/whatsapp-icon.svg" alt="WhatsApp" className="whatsapp-icon-img" width={48} height={48} />
+    <img src="/icons8-whatsapp-48.png" alt="WhatsApp" className="whatsapp-icon-img" width={48} height={48} />
   </a>
 );
 
